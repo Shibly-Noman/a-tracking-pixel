@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Tracker Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button-group button {
+            flex: 1;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .metric {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .metric-value {
+            color: #333;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            margin-bottom: 20px;
+        }
+
+        .chart-title {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .bar-label {
+            min-width: 120px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .bar-background {
+            flex: 1;
+            background: #e9ecef;
+            height: 30px;
+            border-radius: 4px;
+            margin: 0 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .loading {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        .status-message {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .refresh-button {
+            background: #667eea;
+            margin-top: 20px;
+        }
+
+        .event-type-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .event-type-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .event-btn {
+            padding: 10px;
+            background: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s;
+        }
+
+        .event-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .event-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .timestamp {
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Pixel Tracker Dashboard</h1>
+            <p class="subtitle">Track user interactions and analyze visitor data in real-time</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Tracking Form -->
+            <div class="card">
+                <h2>📍 Track Pixel Event</h2>
+                <div id="statusMessage"></div>
+
+                <form id="trackingForm">
+                    <div class="form-group">
+                        <label for="userId">User ID *</label>
+                        <input type="text" id="userId" name="userId" placeholder="Enter user ID" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Type *</label>
+                        <div class="event-type-buttons">
+                            <button type="button" class="event-btn active" data-event="page_view">Page View</button>
+                            <button type="button" class="event-btn" data-event="click">Click</button>
+                            <button type="button" class="event-btn" data-event="purchase">Purchase</button>
+                            <button type="button" class="event-btn" data-event="signup">Sign Up</button>
+                            <button type="button" class="event-btn" data-event="login">Login</button>
+                            <button type="button" class="event-btn" data-event="custom">Custom</button>
+                        </div>
+                        <input type="hidden" id="eventType" name="eventType" value="page_view" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="metadata">Additional Data (JSON)</label>
+                        <textarea id="metadata" name="metadata" placeholder='{"key": "value"}' rows="4"></textarea>
+                    </div>
+
+                    <button type="submit">🎯 Track Event</button>
+                </form>
+
+                <div class="timestamp" id="lastTrackTime"></div>
+            </div>
+
+            <!-- Analytics Dashboard -->
+            <div class="card">
+                <h2>📈 Analytics Overview</h2>
+
+                <div class="analytics-grid">
+                    <div class="metric">
+                        <div class="metric-label">Total Pixels Tracked</div>
+                        <div class="metric-value" id="totalPixels">0</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Unique Users</div>
+                        <div class="metric-value" id="uniqueUsers">0</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">Device Type Breakdown</div>
+                    <div id="deviceChart">
+                        <div class="loading">Loading...</div>
+                    </div>
+                </div>
+
+                <button class="refresh-button" onclick="refreshAnalytics()">🔄 Refresh Analytics</button>
+            </div>
+        </div>
+
+        <!-- Additional Analytics -->
+        <div class="card full-width">
+            <h2>🔍 Detailed Analytics</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px;">
+                <div>
+                    <div class="chart-title">Events by Type</div>
+                    <div id="eventTypeChart">
+                        <div class="loading">Loading...</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="chart-title">Top Browsers</div>
+                    <div id="browserChart">
+                        <div class="loading">Loading...</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="chart-title">Top Operating Systems</div>
+                    <div id="osChart">
+                        <div class="loading">Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+                <p style="color: #666; font-size: 0.9em;">
+                    Last updated: <span id="updateTime">Never</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3000';
+        let selectedEventType = 'page_view';
+
+        // Event type button selection
+        document.querySelectorAll('.event-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.event-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedEventType = btn.dataset.event;
+                document.getElementById('eventType').value = selectedEventType;
+            });
+        });
+
+        // Form submission
+        document.getElementById('trackingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const userId = document.getElementById('userId').value;
+            const eventType = document.getElementById('eventType').value;
+            const metadataStr = document.getElementById('metadata').value;
+
+            let metadata = {};
+            if (metadataStr.trim()) {
+                try {
+                    metadata = JSON.parse(metadataStr);
+                } catch (error) {
+                    showStatus('Invalid JSON in metadata', 'error');
+                    return;
+                }
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/track-pixel`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userId,
+                        eventType,
+                        metadata,
+                    }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    showStatus(`✅ Pixel tracked successfully! ID: ${data.pixelId}`, 'success');
+                    document.getElementById('lastTrackTime').textContent = 
+                        `Last tracked: ${new Date().toLocaleTimeString()}`;
+                    document.getElementById('metadata').value = '';
+                    
+                    // Refresh analytics after tracking
+                    setTimeout(refreshAnalytics, 500);
+                } else {
+                    showStatus('Failed to track pixel', 'error');
+                }
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+            }
+        });
+
+        // Show status message
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.className = `status-message ${type}`;
+            statusDiv.textContent = message;
+            setTimeout(() => {
+                statusDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        // Refresh analytics
+        async function refreshAnalytics() {
+            try {
+                const response = await fetch(`${API_BASE}/analytics`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch analytics');
+                }
+
+                const result = await response.json();
+                const analytics = result.data || result;
+                updateAnalyticsDisplay(analytics);
+                document.getElementById('updateTime').textContent = new Date().toLocaleTimeString();
+            } catch (error) {
+                console.error('Error fetching analytics:', error);
+                showStatus('Failed to load analytics', 'error');
+            }
+        }
+
+        // Update analytics display
+        function updateAnalyticsDisplay(analytics) {
+            // Update metrics
+            document.getElementById('totalPixels').textContent = (analytics.totalPixelsTracked || 0).toLocaleString();
+            document.getElementById('uniqueUsers').textContent = (analytics.uniqueUsers || 0).toLocaleString();
+
+            // Device breakdown
+            const deviceChart = document.getElementById('deviceChart');
+            const deviceBreakdown = analytics.deviceTypeBreakdown || { mobile: 0, desktop: 0 };
+            const maxDevice = Math.max(deviceBreakdown.mobile, deviceBreakdown.desktop, 1);
+            deviceChart.innerHTML = createBar(
+                'Mobile',
+                deviceBreakdown.mobile,
+                maxDevice
+            ) + createBar(
+                'Desktop',
+                deviceBreakdown.desktop,
+                maxDevice
+            );
+
+            // Event type chart
+            const eventChart = document.getElementById('eventTypeChart');
+            const eventsByType = analytics.eventsByType || {};
+            const maxEvents = Math.max(...Object.values(eventsByType), 1);
+            let eventHtml = '';
+            Object.entries(eventsByType)
+                .sort((a, b) => b[1] - a[1])
+                .forEach(([type, count]) => {
+                    eventHtml += createBar(type, count, maxEvents);
+                });
+            eventChart.innerHTML = eventHtml || '<div class="loading">No event data</div>';
+
+            // Browser chart
+            const browserChart = document.getElementById('browserChart');
+            const topBrowsers = analytics.topBrowsers || [];
+            const maxBrowser = Math.max(...topBrowsers.map(b => b.count), 1);
+            let browserHtml = '';
+            topBrowsers.forEach(({ browser, count }) => {
+                browserHtml += createBar(browser, count, maxBrowser);
+            });
+            browserChart.innerHTML = browserHtml || '<div class="loading">No browser data</div>';
+
+            // Operating system chart
+            const osChart = document.getElementById('osChart');
+            const topOS = analytics.topOperatingSystems || [];
+            const maxOS = Math.max(...topOS.map(o => o.count), 1);
+            let osHtml = '';
+            topOS.forEach(({ os, count }) => {
+                osHtml += createBar(os, count, maxOS);
+            });
+            osChart.innerHTML = osHtml || '<div class="loading">No OS data</div>';
+        }
+
+        // Create bar chart element
+        function createBar(label, value, max) {
+            const percentage = (value / max) * 100;
+            return `
+                <div class="bar">
+                    <div class="bar-label">${label}</div>
+                    <div class="bar-background">
+                        <div class="bar-fill" style="width: ${percentage}%">${value}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initial load
+        refreshAnalytics();
+        setInterval(refreshAnalytics, 30000); // Auto-refresh every 30 seconds
+    </script>
+</body>
+</html>
