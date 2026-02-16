@@ -37,3 +37,7 @@ export interface UserAgentInfo {
     osVersion?: string;
     deviceType: 'mobile' | 'desktop';
 }
+
+// Export content and analytics types
+export * from './content.types';
+export * from './analytics.types';

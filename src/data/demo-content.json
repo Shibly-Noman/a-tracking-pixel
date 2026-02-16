@@ -1,0 +1,876 @@
+[
+  {
+    "platform": "facebook",
+    "content_id": "fb_post_001",
+    "taxonomy": {
+      "format": {
+        "type": "video",
+        "subtype": "reel",
+        "aspect_ratio": "9:16",
+        "duration_seconds": 18
+      },
+      "purpose": {
+        "primary": "educational",
+        "secondary": "engagement",
+        "funnel_stage": "top"
+      }
+    },
+    "campaign_mapping": {
+      "objective": "video_views",
+      "optimization_goal": "thruplay",
+      "placement": [
+        "facebook_reels",
+        "instagram_reels"
+      ]
+    },
+    "creative": {
+      "primary_text": "Did you know your SaaS dashboard can break just because an ad blocker flags your API?",
+      "headline": "Ad blockers ≠ ads only",
+      "description": "Here's what every platform owner should know.",
+      "call_to_action": "learn_more"
+    },
+    "media": {
+      "video_url": "https://cdn.example.com/videos/adblocker-awareness.mp4",
+      "thumbnail_url": "https://cdn.example.com/thumbnails/adblocker.png"
+    },
+    "audience": {
+      "targeting_type": "broad",
+      "age_range": [24, 45],
+      "interests": ["SaaS", "AdTech", "Web Development"],
+      "geo": ["BD"]
+    },
+    "metrics_to_track": [
+      "reach",
+      "3s_video_views",
+      "thruplay",
+      "engagement_rate"
+    ],
+    "status": "ready_for_publish",
+    "timeline": {
+      "post_type": "video",
+      "visibility": "public",
+      "publish_mode": "immediate",
+      "scheduled_time": null,
+      "caption": "Did you know your SaaS dashboard can break just because an ad blocker flags your API?\n\nMost people think ad blockers only block ads — but they can silently break critical APIs too.\n\n#SaaS #AdTech #WebDevelopment",
+      "hashtags": [
+        "SaaS",
+        "AdTech",
+        "WebDevelopment",
+        "StartupLife",
+        "Engineering"
+      ],
+      "mentions": [],
+      "location_tag": null,
+      "language": "en",
+      "allow_comments": true,
+      "allow_shares": true,
+      "allow_reactions": true
+    },
+    "page_context": {
+      "page_id": "PAGE_ID",
+      "actor_type": "page",
+      "crosspost_enabled": true
+    },
+    "reel_metadata": {
+      "audio_source": "original",
+      "music_id": null,
+      "auto_captions": true,
+      "safe_zone_compliant": true
+    },
+    "engagement_settings": {
+      "pin_to_page": false,
+      "boost_eligible": true,
+      "boost_default_objective": "video_views"
+    },
+    "moderation": {
+      "comment_filter_level": "medium",
+      "block_keywords": [],
+      "hide_offensive_comments": true
+    },
+    "organic_metrics_to_track": [
+      "post_impressions",
+      "post_engagements",
+      "video_retention",
+      "shares",
+      "comments"
+    ]
+  },
+  {
+    "platform": "instagram",
+    "content_id": "ig_reel_001",
+    "taxonomy": {
+      "format": {
+        "type": "video",
+        "subtype": "reel",
+        "aspect_ratio": "9:16",
+        "duration_seconds": 15
+      },
+      "purpose": {
+        "primary": "promotional",
+        "secondary": "awareness",
+        "funnel_stage": "top"
+      }
+    },
+    "campaign_mapping": {
+      "objective": "engagement",
+      "optimization_goal": "impressions",
+      "placement": [
+        "instagram_reels",
+        "instagram_feed"
+      ]
+    },
+    "creative": {
+      "primary_text": "Transform your analytics game with real-time pixel tracking! 📊✨",
+      "headline": "Real-time Analytics Made Easy",
+      "description": "Track every interaction, understand your users better.",
+      "call_to_action": "learn_more"
+    },
+    "media": {
+      "video_url": "https://cdn.example.com/videos/product-showcase.mp4",
+      "thumbnail_url": "https://cdn.example.com/thumbnails/product-showcase.png"
+    },
+    "audience": {
+      "targeting_type": "narrow",
+      "age_range": [22, 40],
+      "interests": ["Analytics", "Marketing", "Technology"],
+      "geo": ["BD", "IN", "US"]
+    },
+    "metrics_to_track": [
+      "reach",
+      "impressions",
+      "engagement_rate",
+      "saves"
+    ],
+    "status": "published",
+    "timeline": {
+      "post_type": "video",
+      "visibility": "public",
+      "publish_mode": "immediate",
+      "scheduled_time": null,
+      "caption": "Transform your analytics game with real-time pixel tracking! 📊✨\n\nTrack every interaction, understand your users better.\n\n#Analytics #Marketing #Technology #DataDriven",
+      "hashtags": [
+        "Analytics",
+        "Marketing",
+        "Technology",
+        "DataDriven",
+        "GrowthHacking"
+      ],
+      "mentions": [],
+      "location_tag": null,
+      "language": "en",
+      "allow_comments": true,
+      "allow_shares": true,
+      "allow_reactions": true
+    },
+    "reel_metadata": {
+      "audio_source": "library",
+      "music_id": "trending_track_123",
+      "auto_captions": true,
+      "safe_zone_compliant": true
+    },
+    "engagement_settings": {
+      "pin_to_page": false,
+      "boost_eligible": true,
+      "boost_default_objective": "engagement"
+    },
+    "moderation": {
+      "comment_filter_level": "medium",
+      "block_keywords": [],
+      "hide_offensive_comments": true
+    },
+    "organic_metrics_to_track": [
+      "post_impressions",
+      "post_engagements",
+      "saves",
+      "shares"
+    ]
+  },
+  {
+    "platform": "facebook",
+    "content_id": "fb_video_001",
+    "taxonomy": {
+      "format": {
+        "type": "video",
+        "subtype": "post",
+        "aspect_ratio": "16:9",
+        "duration_seconds": 45
+      },
+      "purpose": {
+        "primary": "educational",
+        "secondary": "engagement",
+        "funnel_stage": "middle"
+      }
+    },
+    "campaign_mapping": {
+      "objective": "reach",
+      "optimization_goal": "reach",
+      "placement": [
+        "facebook_feed",
+        "facebook_video_feeds"
+      ]
+    },
+    "creative": {
+      "primary_text": "Master pixel tracking in 45 seconds! Learn how to implement tracking pixels that actually work.",
+      "headline": "Pixel Tracking Tutorial",
+      "description": "Step-by-step guide for developers",
+      "call_to_action": "learn_more"
+    },
+    "media": {
+      "video_url": "https://cdn.example.com/videos/tutorial-pixel-tracking.mp4",
+      "thumbnail_url": "https://cdn.example.com/thumbnails/tutorial.png"
+    },
+    "audience": {
+      "targeting_type": "narrow",
+      "age_range": [25, 50],
+      "interests": ["Web Development", "Programming", "Software Engineering"],
+      "geo": ["BD", "IN", "PK"]
+    },
+    "metrics_to_track": [
+      "reach",
+      "video_views",
+      "thruplay",
+      "engagement_rate"
+    ],
+    "status": "published",
+    "timeline": {
+      "post_type": "video",
+      "visibility": "public",
+      "publish_mode": "immediate",
+      "scheduled_time": null,
+      "caption": "Master pixel tracking in 45 seconds! 🎯\n\nLearn how to implement tracking pixels that actually work.\n\n#WebDevelopment #Programming #Tutorial #DevLife",
+      "hashtags": [
+        "WebDevelopment",
+        "Programming",
+        "Tutorial",
+        "DevLife",
+        "CodingTips"
+      ],
+      "mentions": [],
+      "location_tag": null,
+      "language": "en",
+      "allow_comments": true,
+      "allow_shares": true,
+      "allow_reactions": true
+    },
+    "engagement_settings": {
+      "pin_to_page": false,
+      "boost_eligible": true,
+      "boost_default_objective": "reach"
+    },
+    "moderation": {
+      "comment_filter_level": "low",
+      "block_keywords": [],
+      "hide_offensive_comments": true
+    },
+    "organic_metrics_to_track": [
+      "post_impressions",
+      "post_engagements",
+      "video_retention",
+      "shares"
+    ]
+  },
+  {
+    "platform": "instagram",
+    "content_id": "ig_story_001",
+    "taxonomy": {
+      "format": {
+        "type": "image",
+        "subtype": "story",
+        "aspect_ratio": "9:16",
+        "duration_seconds": null
+      },
+      "purpose": {
+        "primary": "engagement",
+        "secondary": "awareness",
+        "funnel_stage": "top"
+      }
+    },
+    "campaign_mapping": {
+      "objective": "reach",
+      "optimization_goal": "impressions",
+      "placement": [
+        "instagram_stories"
+      ]
+    },
+    "creative": {
+      "primary_text": "Behind the scenes: Building our pixel tracking dashboard 🚀",
+      "headline": "BTS: Dashboard Development",
+      "description": "See how we build amazing tools",
+      "call_to_action": "learn_more"
+    },
+    "media": {
+      "image_url": "https://cdn.example.com/images/bts-dashboard.jpg",
+      "thumbnail_url": "https://cdn.example.com/thumbnails/bts-dashboard.jpg"
+    },
+    "audience": {
+      "targeting_type": "broad",
+      "age_range": [18, 45],
+      "interests": ["Technology", "Startups", "Innovation"],
+      "geo": ["BD", "IN", "US", "UK"]
+    },
+    "metrics_to_track": [
+      "reach",
+      "impressions",
+      "taps_forward",
+      "taps_back"
+    ],
+    "status": "published",
+    "timeline": {
+      "post_type": "image",
+      "visibility": "public",
+      "publish_mode": "immediate",
+      "scheduled_time": null,
+      "caption": "Behind the scenes: Building our pixel tracking dashboard 🚀\n\n#BehindTheScenes #TechLife #Startup",
+      "hashtags": [
+        "BehindTheScenes",
+        "TechLife",
+        "Startup",
+        "Innovation"
+      ],
+      "mentions": [],
+      "location_tag": "Dhaka, Bangladesh",
+      "language": "en",
+      "allow_comments": true,
+      "allow_shares": true,
+      "allow_reactions": true
+    },
+    "engagement_settings": {
+      "pin_to_page": false,
+      "boost_eligible": false,
+      "boost_default_objective": null
+    },
+    "moderation": {
+      "comment_filter_level": "medium",
+      "block_keywords": [],
+      "hide_offensive_comments": true
+    },
+    "organic_metrics_to_track": [
+      "story_impressions",
+      "story_reach",
+      "taps_forward",
+      "taps_back",
+      "exits"
+    ]
+  },
+  {
+    "platform": "facebook",
+    "content_id": "fb_image_001",
+    "taxonomy": {
+      "format": {
+        "type": "image",
+        "subtype": "post",
+        "aspect_ratio": "1:1",
+        "duration_seconds": null
+      },
+      "purpose": {
+        "primary": "promotional",
+        "secondary": "engagement",
+        "funnel_stage": "bottom"
+      }
+    },
+    "campaign_mapping": {
+      "objective": "traffic",
+      "optimization_goal": "landing_page_views",
+      "placement": [
+        "facebook_feed",
+        "facebook_marketplace"
+      ]
+    },
+    "creative": {
+      "primary_text": "🎉 Announcing our new Pixel Tracking API! Now with real-time analytics, custom events, and seamless integration.",
+      "headline": "New API Launch",
+      "description": "Get started today with our comprehensive documentation",
+      "call_to_action": "learn_more"
+    },
+    "media": {
+      "image_url": "https://cdn.example.com/images/api-announcement.jpg",
+      "thumbnail_url": "https://cdn.example.com/thumbnails/api-announcement.jpg"
+    },
+    "audience": {
+      "targeting_type": "custom",
+      "age_range": [25, 55],
+      "interests": ["API Development", "Software Engineering", "Cloud Computing"],
+      "geo": ["BD", "IN", "US", "UK", "CA"]
+    },
+    "metrics_to_track": [
+      "reach",
+      "link_clicks",
+      "landing_page_views",
+      "engagement_rate"
+    ],
+    "status": "published",
+    "timeline": {
+      "post_type": "image",
+      "visibility": "public",
+      "publish_mode": "immediate",
+      "scheduled_time": null,
+      "caption": "🎉 Announcing our new Pixel Tracking API!\n\nNow with:\n✅ Real-time analytics\n✅ Custom events\n✅ Seamless integration\n\nGet started today! Link in bio.\n\n#API #Development #Launch #TechNews",
+      "hashtags": [
+        "API",
+        "Development",
+        "Launch",
+        "TechNews",
+        "SoftwareEngineering"
+      ],
+      "mentions": [],
+      "location_tag": null,
+      "language": "en",
+      "allow_comments": true,
+      "allow_shares": true,
+      "allow_reactions": true
+    },
+    "engagement_settings": {
+      "pin_to_page": true,
+      "boost_eligible": true,
+      "boost_default_objective": "traffic"
+    },
+    "moderation": {
+      "comment_filter_level": "medium",
+      "block_keywords": ["spam", "scam"],
+      "hide_offensive_comments": true
+    },
+    "organic_metrics_to_track": [
+      "post_impressions",
+      "post_engagements",
+      "link_clicks",
+      "shares"
+    ]
+  },
+  {
+    "platform": "instagram",
+    "content_id": "ig_carousel_001",
+    "taxonomy": {
+      "format": {
+        "type": "carousel",
+        "subtype": "post",
+        "aspect_ratio": "1:1",
+        "duration_seconds": null
+      },
+      "purpose": {
+        "primary": "educational",
+        "secondary": "engagement",
+        "funnel_stage": "middle"
+      }
+    },
+    "campaign_mapping": {
+      "objective": "engagement",
+      "optimization_goal": "impressions",
+      "placement": [
+        "instagram_feed",
+        "instagram_explore"
+      ]
+    },
+    "creative": {
+      "primary_text": "5 Essential Tips for Implementing Pixel Tracking 📊 Swipe to learn more!",
+      "headline": "Pixel Tracking Best Practices",
+      "description": "Master the art of tracking",
+      "call_to_action": "learn_more"
+    },
+    "media": {
+      "image_url": "https://cdn.example.com/images/carousel-tips.jpg",
+      "thumbnail_url": "https://cdn.example.com/thumbnails/carousel-tips.jpg"
+    },
+    "audience": {
+      "targeting_type": "narrow",
+      "age_range": [24, 45],
+      "interests": ["Digital Marketing", "Analytics", "Web Development"],
+      "geo": ["BD", "IN", "PK", "US"]
+    },
+    "metrics_to_track": [
+      "reach",
+      "impressions",
+      "engagement_rate",
+      "carousel_card_views"
+    ],
+    "status": "published",
+    "timeline": {
+      "post_type": "carousel",
+      "visibility": "public",
+      "publish_mode": "immediate",
+      "scheduled_time": null,
+      "caption": "5 Essential Tips for Implementing Pixel Tracking 📊\n\nSwipe to learn:\n1️⃣ Choose the right events\n2️⃣ Implement proper consent\n3️⃣ Test thoroughly\n4️⃣ Monitor performance\n5️⃣ Optimize continuously\n\n#PixelTracking #Analytics #DigitalMarketing #WebDev",
+      "hashtags": [
+        "PixelTracking",
+        "Analytics",
+        "DigitalMarketing",
+        "WebDev",
+        "MarketingTips"
+      ],
+      "mentions": [],
+      "location_tag": null,
+      "language": "en",
+      "allow_comments": true,
+      "allow_shares": true,
+      "allow_reactions": true
+    },
+    "engagement_settings": {
+      "pin_to_page": false,
+      "boost_eligible": true,
+      "boost_default_objective": "engagement"
+    },
+    "moderation": {
+      "comment_filter_level": "medium",
+      "block_keywords": [],
+      "hide_offensive_comments": true
+    },
+    "organic_metrics_to_track": [
+      "post_impressions",
+      "post_engagements",
+      "carousel_card_views",
+      "saves"
+    ]
+  },
+  {
+    "platform": "facebook",
+    "content_id": "fb_reel_002",
+    "taxonomy": {
+      "format": {
+        "type": "video",
+        "subtype": "reel",
+        "aspect_ratio": "9:16",
+        "duration_seconds": 22
+      },
+      "purpose": {
+        "primary": "engagement",
+        "secondary": "awareness",
+        "funnel_stage": "top"
+      }
+    },
+    "campaign_mapping": {
+      "objective": "video_views",
+      "optimization_goal": "thruplay",
+      "placement": [
+        "facebook_reels",
+        "instagram_reels"
+      ]
+    },
+    "creative": {
+      "primary_text": "When your analytics dashboard finally makes sense 😍 #DataViz",
+      "headline": "Beautiful Analytics",
+      "description": "See your data come to life",
+      "call_to_action": "learn_more"
+    },
+    "media": {
+      "video_url": "https://cdn.example.com/videos/dashboard-reveal.mp4",
+      "thumbnail_url": "https://cdn.example.com/thumbnails/dashboard-reveal.png"
+    },
+    "audience": {
+      "targeting_type": "broad",
+      "age_range": [22, 50],
+      "interests": ["Data Visualization", "Analytics", "Business Intelligence"],
+      "geo": ["BD", "IN", "US", "UK", "AU"]
+    },
+    "metrics_to_track": [
+      "reach",
+      "3s_video_views",
+      "thruplay",
+      "engagement_rate"
+    ],
+    "status": "published",
+    "timeline": {
+      "post_type": "video",
+      "visibility": "public",
+      "publish_mode": "immediate",
+      "scheduled_time": null,
+      "caption": "When your analytics dashboard finally makes sense 😍\n\nReal-time insights, beautiful visualizations, actionable data.\n\n#DataViz #Analytics #Dashboard #TechLife",
+      "hashtags": [
+        "DataViz",
+        "Analytics",
+        "Dashboard",
+        "TechLife",
+        "BusinessIntelligence"
+      ],
+      "mentions": [],
+      "location_tag": null,
+      "language": "en",
+      "allow_comments": true,
+      "allow_shares": true,
+      "allow_reactions": true
+    },
+    "page_context": {
+      "page_id": "PAGE_ID",
+      "actor_type": "page",
+      "crosspost_enabled": true
+    },
+    "reel_metadata": {
+      "audio_source": "library",
+      "music_id": "trending_track_456",
+      "auto_captions": true,
+      "safe_zone_compliant": true
+    },
+    "engagement_settings": {
+      "pin_to_page": false,
+      "boost_eligible": true,
+      "boost_default_objective": "video_views"
+    },
+    "moderation": {
+      "comment_filter_level": "medium",
+      "block_keywords": [],
+      "hide_offensive_comments": true
+    },
+    "organic_metrics_to_track": [
+      "post_impressions",
+      "post_engagements",
+      "video_retention",
+      "shares"
+    ]
+  },
+  {
+    "platform": "instagram",
+    "content_id": "ig_image_002",
+    "taxonomy": {
+      "format": {
+        "type": "image",
+        "subtype": "post",
+        "aspect_ratio": "4:5",
+        "duration_seconds": null
+      },
+    "purpose": {
+        "primary": "promotional",
+        "secondary": "awareness",
+        "funnel_stage": "middle"
+      }
+    },
+    "campaign_mapping": {
+      "objective": "conversions",
+      "optimization_goal": "landing_page_views",
+      "placement": [
+        "instagram_feed",
+        "instagram_explore"
+      ]
+    },
+    "creative": {
+      "primary_text": "🚀 Free Pixel Tracking Workshop this Friday! Learn from industry experts. Limited spots available.",
+      "headline": "Free Workshop Alert",
+      "description": "Register now - spots filling fast!",
+      "call_to_action": "learn_more"
+    },
+    "media": {
+      "image_url": "https://cdn.example.com/images/workshop-promo.jpg",
+      "thumbnail_url": "https://cdn.example.com/thumbnails/workshop-promo.jpg"
+    },
+    "audience": {
+      "targeting_type": "custom",
+      "age_range": [25, 45],
+      "interests": ["Professional Development", "Marketing", "Analytics"],
+      "geo": ["BD", "IN", "PK"]
+    },
+    "metrics_to_track": [
+      "reach",
+      "impressions",
+      "link_clicks",
+      "landing_page_views"
+    ],
+    "status": "published",
+    "timeline": {
+      "post_type": "image",
+      "visibility": "public",
+      "publish_mode": "immediate",
+      "scheduled_time": null,
+      "caption": "🚀 Free Pixel Tracking Workshop this Friday!\n\nWhat you'll learn:\n✅ Implementation basics\n✅ Advanced tracking techniques\n✅ Analytics interpretation\n✅ Best practices\n\nLimited spots available! Link in bio to register.\n\n#Workshop #Learning #PixelTracking #Marketing",
+      "hashtags": [
+        "Workshop",
+        "Learning",
+        "PixelTracking",
+        "Marketing",
+        "ProfessionalDevelopment"
+      ],
+      "mentions": [],
+      "location_tag": "Dhaka, Bangladesh",
+      "language": "en",
+      "allow_comments": true,
+      "allow_shares": true,
+      "allow_reactions": true
+    },
+    "engagement_settings": {
+      "pin_to_page": false,
+      "boost_eligible": true,
+      "boost_default_objective": "conversions"
+    },
+    "moderation": {
+      "comment_filter_level": "low",
+      "block_keywords": [],
+      "hide_offensive_comments": true
+    },
+    "organic_metrics_to_track": [
+      "post_impressions",
+      "post_engagements",
+      "link_clicks",
+      "saves"
+    ]
+  },
+  {
+    "platform": "facebook",
+    "content_id": "fb_video_002",
+    "taxonomy": {
+      "format": {
+        "type": "video",
+        "subtype": "post",
+        "aspect_ratio": "16:9",
+        "duration_seconds": 90
+      },
+      "purpose": {
+        "primary": "educational",
+        "secondary": "engagement",
+        "funnel_stage": "middle"
+      }
+    },
+    "campaign_mapping": {
+      "objective": "video_views",
+      "optimization_goal": "thruplay",
+      "placement": [
+        "facebook_feed",
+        "facebook_video_feeds"
+      ]
+    },
+    "creative": {
+      "primary_text": "Complete guide to setting up Facebook Pixel in 2026. Everything you need to know in 90 seconds!",
+      "headline": "Facebook Pixel Setup Guide",
+      "description": "Step-by-step tutorial for beginners",
+      "call_to_action": "learn_more"
+    },
+    "media": {
+      "video_url": "https://cdn.example.com/videos/fb-pixel-guide.mp4",
+      "thumbnail_url": "https://cdn.example.com/thumbnails/fb-pixel-guide.png"
+    },
+    "audience": {
+      "targeting_type": "narrow",
+      "age_range": [24, 50],
+      "interests": ["Facebook Marketing", "Digital Advertising", "E-commerce"],
+      "geo": ["BD", "IN", "PK", "US", "UK"]
+    },
+    "metrics_to_track": [
+      "reach",
+      "video_views",
+      "thruplay",
+      "engagement_rate"
+    ],
+    "status": "published",
+    "timeline": {
+      "post_type": "video",
+      "visibility": "public",
+      "publish_mode": "immediate",
+      "scheduled_time": null,
+      "caption": "Complete guide to setting up Facebook Pixel in 2026 🎯\n\nEverything you need to know in 90 seconds!\n\nTopics covered:\n📍 Installation\n📍 Event setup\n📍 Testing\n📍 Troubleshooting\n\nSave this for later!\n\n#FacebookPixel #DigitalMarketing #Tutorial #Ecommerce",
+      "hashtags": [
+        "FacebookPixel",
+        "DigitalMarketing",
+        "Tutorial",
+        "Ecommerce",
+        "MarketingTips"
+      ],
+      "mentions": [],
+      "location_tag": null,
+      "language": "en",
+      "allow_comments": true,
+      "allow_shares": true,
+      "allow_reactions": true
+    },
+    "engagement_settings": {
+      "pin_to_page": false,
+      "boost_eligible": true,
+      "boost_default_objective": "video_views"
+    },
+    "moderation": {
+      "comment_filter_level": "medium",
+      "block_keywords": [],
+      "hide_offensive_comments": true
+    },
+    "organic_metrics_to_track": [
+      "post_impressions",
+      "post_engagements",
+      "video_retention",
+      "shares",
+      "saves"
+    ]
+  },
+  {
+    "platform": "instagram",
+    "content_id": "ig_reel_002",
+    "taxonomy": {
+      "format": {
+        "type": "video",
+        "subtype": "reel",
+        "aspect_ratio": "9:16",
+        "duration_seconds": 12
+      },
+      "purpose": {
+        "primary": "engagement",
+        "secondary": "awareness",
+        "funnel_stage": "top"
+      }
+    },
+    "campaign_mapping": {
+      "objective": "reach",
+      "optimization_goal": "impressions",
+      "placement": [
+        "instagram_reels"
+      ]
+    },
+    "creative": {
+      "primary_text": "POV: You just discovered pixel tracking can do THIS 🤯",
+      "headline": "Mind-Blowing Features",
+      "description": "You won't believe what's possible",
+      "call_to_action": "learn_more"
+    },
+    "media": {
+      "video_url": "https://cdn.example.com/videos/pov-discovery.mp4",
+      "thumbnail_url": "https://cdn.example.com/thumbnails/pov-discovery.png"
+    },
+    "audience": {
+      "targeting_type": "broad",
+      "age_range": [18, 40],
+      "interests": ["Technology", "Innovation", "Digital Marketing"],
+      "geo": ["BD", "IN", "US", "UK", "CA", "AU"]
+    },
+    "metrics_to_track": [
+      "reach",
+      "impressions",
+      "engagement_rate",
+      "saves"
+    ],
+    "status": "published",
+    "timeline": {
+      "post_type": "video",
+      "visibility": "public",
+      "publish_mode": "immediate",
+      "scheduled_time": null,
+      "caption": "POV: You just discovered pixel tracking can do THIS 🤯\n\nReal-time user behavior tracking, conversion attribution, and so much more!\n\n#TechTok #Marketing #Analytics #MindBlown",
+      "hashtags": [
+        "TechTok",
+        "Marketing",
+        "Analytics",
+        "MindBlown",
+        "Innovation"
+      ],
+      "mentions": [],
+      "location_tag": null,
+      "language": "en",
+      "allow_comments": true,
+      "allow_shares": true,
+      "allow_reactions": true
+    },
+    "reel_metadata": {
+      "audio_source": "library",
+      "music_id": "trending_track_789",
+      "auto_captions": true,
+      "safe_zone_compliant": true
+    },
+    "engagement_settings": {
+      "pin_to_page": false,
+      "boost_eligible": true,
+      "boost_default_objective": "reach"
+    },
+    "moderation": {
+      "comment_filter_level": "medium",
+      "block_keywords": [],
+      "hide_offensive_comments": true
+    },
+    "organic_metrics_to_track": [
+      "post_impressions",
+      "post_engagements",
+      "saves",
+      "shares"
+    ]
+  }
+]

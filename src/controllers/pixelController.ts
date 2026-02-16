@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { TrackerService } from '../services/trackerService';
-import { AnalyticsService } from '../services/analyticsService';
-import { PixelData } from '../types';
+import { contentService, trackerService, analyticsService } from '../services';
+import { ContentService, TrackerService, AnalyticsService } from '../services';
+import { PixelData, ContentTrackingEvent } from '../types';
 import {
     generateUniqueId,
     getIpAddress,
@@ -11,10 +11,13 @@ import {
 class PixelController {
     private trackerService: TrackerService;
     private analyticsService: AnalyticsService;
+    private contentService: ContentService;
 
     constructor() {
-        this.trackerService = new TrackerService();
-        this.analyticsService = new AnalyticsService();
+        // Use shared singleton instances instead of creating new ones
+        this.trackerService = trackerService;
+        this.analyticsService = analyticsService;
+        this.contentService = contentService;
     }
 
     trackPixel(req: Request, res: Response) {
@@ -134,6 +137,98 @@ class PixelController {
                 error: 'Failed to retrieve analytics',
             });
         }
+    }
+
+    /**
+     * Track content event
+     * POST /api/track-content-event
+     */
+    trackContentEvent(req: Request, res: Response) {
+        try {
+            const { content_id, event_type, userId, event_metadata } = req.body;
+
+            // Validate required fields
+            if (!content_id) {
+                return res.status(400).json({
+                    success: false,
+                    error: 'content_id is required',
+                });
+            }
+
+            if (!event_type) {
+                return res.status(400).json({
+                    success: false,
+                    error: 'event_type is required',
+                });
+            }
+
+            if (!userId) {
+                return res.status(400).json({
+                    success: false,
+                    error: 'userId is required',
+                });
+            }
+
+            // Check if content exists
+            const content = this.contentService.getById(content_id);
+            if (!content) {
+                return res.status(404).json({
+                    success: false,
+                    error: 'Content not found',
+                    content_id,
+                });
+            }
+
+            // Get user agent info
+            const userAgent = req.headers['user-agent'] || 'Unknown';
+            const ipAddress = getIpAddress(req);
+            const userAgentInfo = parseUserAgent(userAgent);
+
+            // Create content tracking event
+            const event: ContentTrackingEvent = {
+                event_id: generateUniqueId(),
+                content_id,
+                event_type,
+                userId,
+                timestamp: new Date(),
+                ipAddress,
+                browserType: userAgentInfo.browserType,
+                browserVersion: userAgentInfo.browserVersion,
+                deviceType: userAgentInfo.deviceType,
+                operatingSystem: userAgentInfo.operatingSystem,
+                osVersion: userAgentInfo.osVersion,
+                userAgent,
+                event_metadata,
+            };
+
+            // Log the event
+            this.trackerService.logContentEvent(event);
+
+            res.status(200).json({
+                success: true,
+                event_id: event.event_id,
+                timestamp: event.timestamp,
+            });
+        } catch (error: any) {
+            console.error('Error tracking content event:', error);
+            res.status(500).json({
+                success: false,
+                error: 'Failed to track content event',
+            });
+        }
+    }
+
+    // Expose services for dependency injection
+    getTrackerService(): TrackerService {
+        return this.trackerService;
+    }
+
+    getAnalyticsService(): AnalyticsService {
+        return this.analyticsService;
+    }
+
+    getContentService(): ContentService {
+        return this.contentService;
     }
 }
 

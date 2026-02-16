@@ -1,4 +1,4 @@
-import { PixelData, AnalyticsReport } from '../types';
+import { PixelData, AnalyticsReport, ContentTrackingEvent, ContentAnalyticsReport, SocialMediaContent } from '../types';
 
 export class AnalyticsService {
     analyzeData(data: PixelData[]): AnalyticsReport {
@@ -94,5 +94,146 @@ export class AnalyticsService {
         };
 
         return JSON.stringify(report, null, 2);
+    }
+
+    /**
+     * Generate analytics report for specific content
+     */
+    generateContentAnalytics(
+        content: SocialMediaContent,
+        events: ContentTrackingEvent[]
+    ): ContentAnalyticsReport {
+        if (events.length === 0) {
+            return {
+                content_id: content.content_id,
+                platform: content.platform,
+                total_impressions: 0,
+                unique_users: 0,
+                engagement_metrics: {
+                    total_engagements: 0,
+                    engagement_rate: 0,
+                    breakdown: {},
+                },
+                click_metrics: {
+                    total_clicks: 0,
+                    ctr: 0,
+                    breakdown: {},
+                },
+                audience_breakdown: {
+                    by_device: { mobile: 0, desktop: 0 },
+                    by_browser: {},
+                    by_os: {},
+                },
+                timestamp: new Date(),
+            };
+        }
+
+        // Basic metrics
+        const impressions = events.filter(e => e.event_type === 'impression').length;
+        const uniqueUsers = new Set(events.map(e => e.userId)).size;
+
+        // Video metrics
+        const videoEvents = events.filter(e =>
+            e.event_type === 'video_view' ||
+            e.event_type === 'video_3s' ||
+            e.event_type === 'thruplay'
+        );
+        
+        let videoMetrics = undefined;
+        if (videoEvents.length > 0) {
+            const videoViews = events.filter(e => e.event_type === 'video_view');
+            const threeSecViews = events.filter(e => e.event_type === 'video_3s');
+            const thruplayEvents = events.filter(e => e.event_type === 'thruplay');
+            
+            const totalWatchDuration = videoViews.reduce((sum, e) =>
+                sum + (e.event_metadata?.watch_duration || 0), 0
+            );
+            const avgWatchDuration = videoViews.length > 0 ? totalWatchDuration / videoViews.length : 0;
+            
+            const totalCompletion = videoViews.reduce((sum, e) =>
+                sum + (e.event_metadata?.completion_percentage || 0), 0
+            );
+            const completionRate = videoViews.length > 0 ? totalCompletion / videoViews.length : 0;
+            
+            const viewRate = impressions > 0 ? (videoViews.length / impressions) * 100 : 0;
+
+            videoMetrics = {
+                total_views: videoViews.length,
+                three_second_views: threeSecViews.length,
+                thruplay: thruplayEvents.length,
+                avg_watch_duration: Math.round(avgWatchDuration * 100) / 100,
+                completion_rate: Math.round(completionRate * 100) / 100,
+                view_rate: Math.round(viewRate * 100) / 100,
+            };
+        }
+
+        // Engagement metrics
+        const engagementEvents = events.filter(e =>
+            e.event_type === 'engagement' ||
+            e.event_type === 'share' ||
+            e.event_type === 'comment' ||
+            e.event_type === 'reaction'
+        );
+        
+        const engagementBreakdown: Record<string, number> = {};
+        engagementEvents.forEach(e => {
+            if (e.event_type === 'engagement' && e.event_metadata?.engagement_type) {
+                const type = e.event_metadata.engagement_type;
+                engagementBreakdown[type] = (engagementBreakdown[type] || 0) + 1;
+            } else if (e.event_type === 'share') {
+                engagementBreakdown.share = (engagementBreakdown.share || 0) + 1;
+            } else if (e.event_type === 'comment') {
+                engagementBreakdown.comment = (engagementBreakdown.comment || 0) + 1;
+            }
+        });
+
+        const engagementRate = impressions > 0 ? (engagementEvents.length / impressions) * 100 : 0;
+
+        // Click metrics
+        const clickEvents = events.filter(e => e.event_type === 'click');
+        const clickBreakdown: Record<string, number> = {};
+        clickEvents.forEach(e => {
+            if (e.event_metadata?.click_target) {
+                const target = e.event_metadata.click_target;
+                clickBreakdown[target] = (clickBreakdown[target] || 0) + 1;
+            }
+        });
+
+        const ctr = impressions > 0 ? (clickEvents.length / impressions) * 100 : 0;
+
+        // Audience breakdown
+        const deviceBreakdown = { mobile: 0, desktop: 0 };
+        const browserBreakdown: Record<string, number> = {};
+        const osBreakdown: Record<string, number> = {};
+
+        events.forEach(e => {
+            deviceBreakdown[e.deviceType]++;
+            browserBreakdown[e.browserType] = (browserBreakdown[e.browserType] || 0) + 1;
+            osBreakdown[e.operatingSystem] = (osBreakdown[e.operatingSystem] || 0) + 1;
+        });
+
+        return {
+            content_id: content.content_id,
+            platform: content.platform,
+            total_impressions: impressions,
+            unique_users: uniqueUsers,
+            video_metrics: videoMetrics,
+            engagement_metrics: {
+                total_engagements: engagementEvents.length,
+                engagement_rate: Math.round(engagementRate * 100) / 100,
+                breakdown: engagementBreakdown,
+            },
+            click_metrics: {
+                total_clicks: clickEvents.length,
+                ctr: Math.round(ctr * 100) / 100,
+                breakdown: clickBreakdown,
+            },
+            audience_breakdown: {
+                by_device: deviceBreakdown,
+                by_browser: browserBreakdown,
+                by_os: osBreakdown,
+            },
+            timestamp: new Date(),
+        };
     }
 }
