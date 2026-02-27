@@ -73,7 +73,7 @@ Our platform addresses these challenges by offering:
 
 The system is built on an event-driven, distributed architecture with ingestion, processing, storage, and analytics layers separated for scalability and reliability.
 
-```mermaid
+```
 graph TD
     subgraph Client Website
         A[Tracking Pixel (JS)]
