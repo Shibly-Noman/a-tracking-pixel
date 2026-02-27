@@ -1,7 +1,3 @@
-Okay, here's a comprehensive `README.md` tailored for your Cookieless Tracking & Attribution SaaS platform, incorporating all the architectural decisions, technologies, and monorepo structure we've discussed. It's designed to be a central reference point for developers, new team members, and even stakeholders.
-
----
-
 # 🚀 Cookieless Tracking & Attribution SaaS Platform
 
 [![Turborepo](https://img.shields.io/badge/Powered%20by-Turborepo-orange?style=flat&logo=turborepo)](https://turborepo.org)
@@ -97,20 +93,6 @@ graph TD
     subgraph Analytics & Management
         K[Dashboard Frontend (Next.js)]
     end
-
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    E --> G
-    F --> G
-    F --> H
-    K --> I
-    I --> H
-    I --> G
-    J --> H
-    J --> G
 ```
 
 ---
