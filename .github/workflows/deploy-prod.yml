@@ -1,0 +1,64 @@
+name: Deploy Production
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - 'v*'
+
+jobs:
+  deploy:
+    name: Deploy to production K8s
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency: production
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure kubectl
+        uses: azure/k8s-set-context@v3
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG_PROD }}
+
+      - name: Create namespace
+        run: kubectl create namespace platform --dry-run=client -o yaml | kubectl apply -f -
+
+      - name: Apply ConfigMaps
+        run: kubectl apply -f infra/kubernetes/configmaps/
+
+      - name: Apply Secrets (from CI secrets)
+        run: |
+          kubectl create secret generic platform-secrets \
+            --from-literal=DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+            --from-literal=JWT_SECRET="${{ secrets.JWT_SECRET }}" \
+            --from-literal=INTERNAL_API_KEY="${{ secrets.INTERNAL_API_KEY }}" \
+            --namespace=platform \
+            --save-config --dry-run=client -o yaml | kubectl apply -f -
+
+      - name: Update image tags
+        run: |
+          SHA=${{ github.sha }}
+          REGISTRY=ghcr.io/${{ github.repository }}
+          kubectl set image deployment/ingestion-api ingestion-api=${REGISTRY}/ingestion-api:${SHA} -n platform
+          kubectl set image deployment/event-transformer event-transformer=${REGISTRY}/event-transformer:${SHA} -n platform
+          kubectl set image deployment/attribution-engine attribution-engine=${REGISTRY}/attribution-engine:${SHA} -n platform
+          kubectl set image deployment/query-api query-api=${REGISTRY}/query-api:${SHA} -n platform
+          kubectl set image deployment/dashboard dashboard=${REGISTRY}/dashboard:${SHA} -n platform
+
+      - name: Apply K8s manifests
+        run: |
+          kubectl apply -f infra/kubernetes/deployments/ -n platform
+          kubectl apply -f infra/kubernetes/services/ -n platform
+          kubectl apply -f infra/kubernetes/ingress/ -n platform
+
+      - name: Wait for rollout
+        run: |
+          kubectl rollout status deployment/ingestion-api -n platform --timeout=5m
+          kubectl rollout status deployment/query-api -n platform --timeout=5m
+          kubectl rollout status deployment/dashboard -n platform --timeout=5m
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "Deployment failed. Check kubectl rollout history for details."

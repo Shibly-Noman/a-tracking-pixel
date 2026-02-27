@@ -1,0 +1,138 @@
+# ===========================================
+# Dependencies
+# ===========================================
+node_modules/
+.pnp/
+.pnp.js
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# ===========================================
+# Build outputs
+# ===========================================
+# Next.js
+.next/
+out/
+dist/
+build/
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+bin/
+
+# Turborepo
+.turbo/
+
+# ===========================================
+# Testing
+# ===========================================
+coverage/
+
+# ===========================================
+# Misc
+# ===========================================
+.DS_Store
+*.pem
+
+# ===========================================
+# Debug logs
+# ===========================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ===========================================
+# Local environment files
+# ===========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+#.env.*.local - uncomment if needed
+!.env.example
+
+# ===========================================
+# IDE
+# ===========================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.vs/
+
+# ===========================================
+# TypeScript
+# ===========================================
+*.tsbuildinfo
+next-env.d.ts
+
+# ===========================================
+# Go
+# ===========================================
+# Go workspace file
+go.work
+
+# Vendor directory (if using modules)
+# vendor/
+
+# Test binary, compiled with -cover
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go dependency files (keep go.mod, ignore go.sum if generated)
+# go.sum
+
+# Binary name (usually based on the directory name)
+# Will be ignored for individual service binaries
+
+# ===========================================
+# Docker
+# ===========================================
+*.dockerignore
+
+# ===========================================
+# Logs
+# ===========================================
+*.log
+logs/
+*.tmp
+
+# ===========================================
+# pnpm
+# ===========================================
+.pnpm-store/
+
+# ===========================================
+# Cache
+# ===========================================
+.cache/
+.eslintcache
+.next/cache/
+
+# ===========================================
+# Storybook
+# ===========================================
+storybook-static/
+
+# ===========================================
+# Temporary files
+# ===========================================
+*.tmp
+.temp/
