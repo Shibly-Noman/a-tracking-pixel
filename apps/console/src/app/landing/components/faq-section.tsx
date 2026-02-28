@@ -14,39 +14,33 @@ type FaqItem = {
 const faqItems: FaqItem[] = [
   {
     value: 'item-1',
-    question: 'How do I integrate PeekPixel components into my project?',
+    question: 'How does your platform track events without cookies?',
     answer:
-      'Integration is simple! All our components are built with shadcn/ui and work with React, Next.js, and Vite. Just copy the component code, install any required dependencies, and paste it into your project. Each component comes with detailed installation instructions and examples.',
+      'We use a combination of server-side heuristics, hashed client properties (like IP and user-agent), and advanced modeling to create anonymous session identifiers without storing any data in the user\'s browser (cookies or local storage).',
   },
   {
     value: 'item-2',
-    question: 'What\'s the difference between free and premium components?',
+    question: 'Is your platform GDPR and CCPA compliant?',
     answer:
-      'Free components include essential UI elements like buttons, forms, and basic layouts. Premium components offer advanced features like complex data tables, analytics dashboards, authentication flows, and complete admin templates. Premium also includes Figma files, priority support, and commercial licenses.',
+      'Yes, absolutely. Privacy by Design is a core principle. We immediately hash IPs, do not store raw PII, and offer configurable data retention, making it inherently compliant with major global privacy regulations.',
   },
   {
     value: 'item-3',
-    question: 'Can I use these components in commercial projects?',
+    question: 'What attribution models do you support?',
     answer:
-      'Yes! Free components come with an MIT license for unlimited use. Premium components include a commercial license that allows usage in client projects, SaaS applications, and commercial products without attribution requirements.',
+      'We support a range of models including Last-Touch, First-Touch, Time-Decay, and custom session-based models, giving you flexibility to align with your marketing objectives.',
   },
   {
     value: 'item-4',
-    question: 'Do you provide support and updates?',
+    question: 'How does the "1M+ events/second" scalability work?',
     answer:
-      'Absolutely! We provide community support for free components through our Discord server and GitHub issues. Premium subscribers get priority email support, regular component updates, and early access to new releases. We also maintain compatibility with the latest shadcn/ui versions.',
+      'Our architecture is entirely event-driven and distributed. Components like the Ingestion API and stream processors are stateless and horizontally scalable, leveraging technologies like Kafka and ClickHouse, allowing us to handle immense volumes of data efficiently.',
   },
   {
     value: 'item-5',
-    question: 'What frameworks and tools do you support?',
+    question: 'Can I integrate with my existing data warehouse or BI tools?',
     answer:
-      'Our components work with React 18+, Next.js 13+, and Vite. We use TypeScript, Tailwind CSS, and follow shadcn/ui conventions. Components are tested with popular tools like React Hook Form, TanStack Query, and Zustand for state management.',
-  },
-  {
-    value: 'item-6',
-    question: 'How often do you release new components?',
-    answer:
-      'We release new components and templates weekly. Premium subscribers get early access to new releases, while free components are updated regularly based on community feedback. You can track our roadmap and request specific components through our GitHub repository.',
+      'Yes, our Query API allows for flexible data extraction. We also offer enterprise options for direct data warehouse integration and server-to-server exports.',
   },
 ]
 
@@ -58,10 +52,10 @@ const FaqSection = () => {
         <div className="mx-auto max-w-2xl text-center mb-16">
           <Badge variant="outline" className="mb-4">FAQ</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Frequently Asked Questions
+            Got Questions? We Have Answers.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Everything you need to know about PeekPixel components, licensing, and integration. Still have questions? We&apos;re here to help!
+            Find quick answers to the most common queries about our platform.
           </p>
         </div>
 
@@ -94,7 +88,7 @@ const FaqSection = () => {
             </p>
             <Button className='cursor-pointer' asChild>
               <a href="#contact">
-                Contact Support
+                Send Message
               </a>
             </Button>
           </div>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Play, Star } from 'lucide-react'
+import { ArrowRight, Play, ShieldCheck } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { DotPattern } from '@/components/dot-pattern'
@@ -21,25 +21,24 @@ export function HeroSection() {
           {/* Announcement Badge */}
           <div className="mb-8 flex justify-center">
             <Badge variant="outline" className="px-4 py-2 border-foreground">
-              <Star className="w-3 h-3 mr-2 fill-current" />
-              New: Premium Template Collection
+              <ShieldCheck className="w-3 h-3 mr-2" />
+              Privacy-First Analytics Platform
               <ArrowRight className="w-3 h-3 ml-2" />
             </Badge>
           </div>
 
           {/* Main Headline */}
           <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-            Build Better
+            Navigate the Cookieless Future
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {" "}Web Applications{" "}
+              {' '}with Confidence.
             </span>
-            with Ready-Made Components
           </h1>
 
           {/* Subheading */}
           <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-            Accelerate your development with our curated collection of blocks, templates, landing pages,
-            and admin dashboards. From free components to complete solutions, built with shadcn/ui.
+            Unlock unparalleled insights and accurate attribution, all while championing user privacy. Your data,
+            amplified. Your compliance, guaranteed.
           </p>
 
           {/* CTA Buttons */}
@@ -51,9 +50,8 @@ export function HeroSection() {
               </Link>
             </Button>
             <Button variant="outline" size="lg" className="text-base cursor-pointer" asChild>
-              <a href="#">
-                <Play className="mr-2 h-4 w-4" />
-                Watch Demo
+              <a href="#contact">
+                Request a Demo
               </a>
             </Button>
           </div>

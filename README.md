@@ -93,6 +93,20 @@ graph TD
     subgraph Analytics & Management
         K[Dashboard Frontend (Next.js)]
     end
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    E --> G
+    F --> G
+    F --> H
+    K --> I
+    I --> H
+    I --> G
+    J --> H
+    J --> G
 ```
 
 ---

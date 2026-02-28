@@ -1,15 +1,13 @@
 "use client"
 
 import {
-  BarChart3,
-  Zap,
-  Users,
+  Activity,
+  Shield,
+  Network,
   ArrowRight,
-  Database,
-  Package,
-  Crown,
-  Layout,
-  Palette
+  Scale,
+  Gauge,
+  Lock
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -17,47 +15,43 @@ import { Image3D } from '@/components/image-3d'
 
 const mainFeatures = [
   {
-    icon: Package,
-    title: 'Curated Component Library',
-    description: 'Hand-picked blocks and templates for quality and reliability.'
+    icon: Activity,
+    title: 'Future-Proof Data Collection',
+    description:
+      'Capture comprehensive first-party behavioral events (page views, custom actions) using a tiny, privacy-preserving JavaScript pixel. No cookies, no local storage, just clean, actionable data.'
   },
   {
-    icon: Crown,
-    title: 'Free & Premium Options',
-    description: 'Start free, upgrade to premium collections when you need more.'
+    icon: Shield,
+    title: 'Intelligent Session Reconstruction',
+    description:
+      'Our advanced server-side heuristics intelligently group events into anonymous sessions, providing accurate user journey insights without storing personally identifiable information or relying on cross-site identifiers.'
   },
   {
-    icon: Layout,
-    title: 'Ready-to-Use Templates',
-    description: 'Copy-paste components that just work out of the box.'
-  },
-  {
-    icon: Zap,
-    title: 'Regular Updates',
-    description: 'New blocks and templates added weekly to keep you current.'
+    icon: Network,
+    title: 'Tailored Performance Insights',
+    description:
+      'Understand the true impact of your marketing efforts with configurable attribution models. Choose from Last-Touch, First-Touch, Time-Decay, and more to precisely credit the right touchpoints.'
   }
 ]
 
 const secondaryFeatures = [
   {
-    icon: BarChart3,
-    title: 'Multiple Frameworks',
-    description: 'React, Next.js, and Vite compatibility for flexible development.'
+    icon: Scale,
+    title: 'Instant Operational Clarity',
+    description:
+      'Access live, low-latency dashboards displaying key metrics like event counts, conversion rates, and campaign breakdowns. Make data-driven decisions as they happen, not hours later.'
   },
   {
-    icon: Palette,
-    title: 'Modern Tech Stack',
-    description: 'Built with shadcn/ui, Tailwind CSS, and TypeScript.'
+    icon: Gauge,
+    title: 'Designed for Hyper-Growth',
+    description:
+      'Our distributed, event-driven architecture is built to handle millions of events per second, ensuring your tracking infrastructure grows seamlessly with your business, without performance bottlenecks.'
   },
   {
-    icon: Users,
-    title: 'Responsive Design',
-    description: 'Mobile-first components for all screen sizes and devices.'
-  },
-  {
-    icon: Database,
-    title: 'Developer-Friendly',
-    description: 'Clean code, well-documented, easy integration and customization.'
+    icon: Lock,
+    title: 'Built-in Trust & Regulation Adherence',
+    description:
+      'With immediate IP hashing, strict data retention policies, and architectural choices that prioritize privacy, our platform helps you meet GDPR, CCPA, and ePrivacy regulations effortlessly.'
   }
 ]
 
@@ -67,12 +61,12 @@ export function FeaturesSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Marketplace Features</Badge>
+          <Badge variant="outline" className="mb-4">Features</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Everything you need to build amazing web applications
+            Intelligence Without Compromise.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our marketplace provides curated blocks, templates, landing pages, and admin dashboards to help you build professional applications faster than ever.
+            Explore the core capabilities that set your analytics and attribution apart.
           </p>
         </div>
 
@@ -89,10 +83,10 @@ export function FeaturesSection() {
           <div className="space-y-6">
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
-                Components that accelerate development
+                Cookieless Event Tracking
               </h3>
               <p className="text-muted-foreground text-base text-pretty">
-                Our curated marketplace offers premium blocks and templates designed to save time and ensure consistency across your admin projects.
+                Capture privacy-safe behavioral events without sacrificing depth, speed, or measurement accuracy.
               </p>
             </div>
 
@@ -113,13 +107,13 @@ export function FeaturesSection() {
             <div className="flex flex-col sm:flex-row gap-4 pe-4 pt-2">
               <Button size="lg" className="cursor-pointer">
                 <a href="https://PeekPixel.com/templates" className='flex items-center'>
-                  Browse Templates
+                  Get Started Free
                   <ArrowRight className="ms-2 size-4" aria-hidden="true" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="cursor-pointer">
-                <a href="https://PeekPixel.com/blocks">
-                  View Components
+                <a href="#contact">
+                  Request a Demo
                 </a>
               </Button>
             </div>
@@ -132,10 +126,10 @@ export function FeaturesSection() {
           <div className="space-y-6 order-2 lg:order-1">
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
-                Built for modern development workflows
+                Privacy, Scale, and Real-Time Clarity
               </h3>
               <p className="text-muted-foreground text-base text-pretty">
-                Every component follows best practices with TypeScript, responsive design, and clean code architecture that integrates seamlessly into your projects.
+                Turn high-volume event streams into immediate, compliant decision intelligence for every marketing and product team.
               </p>
             </div>
 
@@ -161,8 +155,8 @@ export function FeaturesSection() {
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="cursor-pointer">
-                <a href="https://github.com/silicondeck/shadcn-dashboard-landing-template" target="_blank" rel="noopener noreferrer">
-                  GitHub Repository
+                <a href="#pricing">
+                  View Pricing
                 </a>
               </Button>
             </div>

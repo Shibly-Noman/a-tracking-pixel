@@ -8,56 +8,53 @@ import { useState } from 'react'
 
 const plans = [
   {
-    name: 'Free',
-    description: 'Perfect for getting started with essential components',
+    name: 'Developer (Free Tier)',
+    description: 'Get started, explore the platform, and test your integration.',
     monthlyPrice: 0,
     yearlyPrice: 0,
+    priceLabel: 'Free',
     features: [
-      'Access to 50+ free components',
-      'Basic dashboard templates',
-      'Community support',
-      'GitHub repository access',
-      'Documentation and guides'
+      'Up to X events/month',
+      '1 Project',
+      'Basic Dashboards',
+      'Last-Touch Attribution'
     ],
-    cta: 'Get Started',
+    cta: 'Sign Up Free',
     popular: false
   },
   {
-    name: 'Pro',
-    description: 'For developers who need premium templates and components',
+    name: 'Growth',
+    description: 'Power your growing business with essential analytics and attribution.',
     monthlyPrice: 19,
     yearlyPrice: 15,
+    priceLabel: 'Starting at $X/month',
     features: [
-      'Premium template collection',
-      'Advanced dashboard layouts',
-      'Priority support',
-      'Commercial use license',
-      'Early access to new releases',
-      'Figma design files',
-      'Custom component requests',
-      'Direct developer access',
-      'Exclusive design resources'
+      'Up to Y events/month',
+      'Unlimited Projects',
+      'Real-Time Dashboards',
+      'All Attribution Models',
+      '1-Year Data Retention'
     ],
-    cta: 'Get Started',
+    cta: 'Start Free Trial',
     popular: true,
-    includesPrevious: 'All Free features, plus'
+    includesPrevious: undefined
   },
   {
-    name: 'Lifetime',
-    description: 'One-time payment for lifetime access to everything',
+    name: 'Enterprise',
+    description: 'Tailored solutions for high-volume, complex data needs.',
     monthlyPrice: 299,
     yearlyPrice: 299,
+    priceLabel: 'Custom Pricing',
     features: [
-      'Lifetime updates and support',
-      'Private Discord channel',
-      'No recurring fees ever',
-      'Future template access',
-      'VIP support priority',
-      'Exclusive beta features'
+      'Millions of events/month',
+      'Dedicated Support',
+      'Custom Integrations',
+      'On-Premise/Private Cloud Options',
+      'Custom Data Retention'
     ],
-    cta: 'Get Started',
+    cta: 'Contact Sales',
     popular: false,
-    includesPrevious: 'All Pro features, plus'
+    includesPrevious: undefined
   }
 ]
 
@@ -71,10 +68,10 @@ export function PricingSection() {
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Badge variant="outline" className="mb-4">Pricing Plans</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Choose your plan
+            Flexible Plans for Every Stage of Growth.
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Start building with our free components or upgrade to Pro for access to premium templates and advanced features.
+            Get the insights you need with transparent pricing, designed to scale with your event volume.
           </p>
 
           {/* Billing Toggle */}
@@ -127,16 +124,14 @@ export function PricingSection() {
                   {/* Pricing */}
                   <div>
                     <div className="text-4xl font-bold mb-1">
-                      {plan.name === 'Lifetime' ? (
-                        `$${plan.monthlyPrice}`
-                      ) : plan.name === 'Free' ? (
-                        '$0'
+                      {plan.priceLabel ? (
+                        plan.priceLabel
                       ) : (
                         `$${isYearly ? plan.yearlyPrice : plan.monthlyPrice}`
                       )}
                     </div>
                     <div className="text-muted-foreground text-sm">
-                      {plan.name === 'Lifetime' ? 'One-time payment' : 'Per month'}
+                      {plan.name === 'Enterprise' ? 'Tailored enterprise engagement' : 'Per month'}
                     </div>
                   </div>
 
@@ -179,10 +174,10 @@ export function PricingSection() {
         {/* Enterprise Note */}
         <div className="mt-16 text-center">
           <p className="text-muted-foreground">
-            Need custom components or have questions? {' '}
+            Need a tailored plan for your event volume and compliance needs?{' '}
             <Button variant="link" className="p-0 h-auto cursor-pointer" asChild>
               <a href="#contact">
-                Contact our team
+                Contact Sales
               </a>
             </Button>
           </p>

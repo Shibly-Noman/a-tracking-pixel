@@ -1,31 +1,30 @@
 "use client"
 
-import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { CardDecorator } from '@/components/ui/card-decorator'
-import { Github, Code, Palette, Layout, Crown } from 'lucide-react'
+import { ShieldCheck, Radar, Workflow, Scale } from 'lucide-react'
 
 const values = [
   {
-    icon: Code,
-    title: 'Developer First',
-    description: 'Every component is built with the developer experience in mind, ensuring clean code and easy integration.'
+    icon: ShieldCheck,
+    title: 'Privacy-First Architecture',
+    description: 'Purpose-built infrastructure designed to collect actionable data while protecting user privacy from the first event onward.'
   },
   {
-    icon: Palette,
-    title: 'Design Excellence',
-    description: 'We maintain the highest design standards, following shadcn/ui principles and modern UI patterns.'
+    icon: Radar,
+    title: 'Accurate Measurement',
+    description: 'Preserve marketing visibility with event intelligence and attribution modeling that stays reliable in a cookieless world.'
   },
   {
-    icon: Layout,
-    title: 'Production Ready',
-    description: 'Battle-tested components used in real applications with proven performance and reliability across different environments.'
+    icon: Workflow,
+    title: 'Responsible Growth',
+    description: 'Move from fragmented signals to cohesive user journey insights without compromising trust or performance.'
   },
   {
-    icon: Crown,
-    title: 'Premium Quality',
-    description: 'Hand-crafted with attention to detail and performance optimization, ensuring exceptional user experience and accessibility.'
+    icon: Scale,
+    title: 'Compliance by Design',
+    description: 'Stay aligned with evolving regulations through privacy-aware defaults and governance-ready data handling practices.'
   }
 ]
 
@@ -36,14 +35,14 @@ export function AboutSection() {
         {/* Section Header */}
         <div className="mx-auto max-w-4xl text-center mb-16">
           <Badge variant="outline" className="mb-4">
-            About PeekPixel
+            About Our Platform
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-            Built for developers, by developers
+            Your Privacy-First Foundation for Growth.
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            We&apos;re passionate about creating the best marketplace for shadcn/ui components and templates.
-            Our mission is to accelerate development and help developers build beautiful admin interfaces faster.
+            In a world moving beyond cookies, staying compliant and insightful is no longer a trade-off. We provide
+            the essential infrastructure.
           </p>
         </div>
 
@@ -64,24 +63,20 @@ export function AboutSection() {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="mt-16 text-center">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="text-muted-foreground">❤️ Made with love for the developer community</span>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="cursor-pointer" asChild>
-              <a href="https://github.com/silicondeck/shadcn-dashboard-landing-template" target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-4 w-4" />
-                Star on GitHub
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" className="cursor-pointer" asChild>
-              <a href="https://discord.com/invite/XEQhPc9a6p" target="_blank" rel="noopener noreferrer">
-                Join Discord Community
-              </a>
-            </Button>
-          </div>
+        {/* About Content */}
+        <div className="mx-auto max-w-5xl space-y-6 text-center">
+          <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+            The digital landscape is evolving. Third-party cookies are disappearing, privacy regulations are
+            tightening, and users demand more control over their data. This shift has left many businesses
+            struggling to accurately measure marketing performance and understand user journeys. Our platform was
+            born from this challenge.
+          </p>
+          <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+            We built a robust, event-driven system from the ground up to empower businesses like yours. Our
+            cookieless approach ensures that you collect valuable first-party behavioral data, model anonymous user
+            sessions with precision, and achieve accurate campaign attribution – all while upholding the highest
+            standards of user privacy and regulatory compliance. Stop guessing, start growing responsibly.
+          </p>
         </div>
       </div>
     </section>

@@ -1,47 +1,47 @@
-import { MetricsOverview } from "./components/metrics-overview"
-import { SalesChart } from "./components/sales-chart"
-import { RecentTransactions } from "./components/recent-transactions"
-import { TopProducts } from "./components/top-products"
-import { CustomerInsights } from "./components/customer-insights"
-import { QuickActions } from "./components/quick-actions"
-import { RevenueBreakdown } from "./components/revenue-breakdown"
+import { TrafficMetrics } from "./components/traffic-metrics"
+import { ActivityOverTime } from "./components/activity-over-time"
+import { TrafficSources } from "./components/traffic-sources"
+import { ConversionFunnel } from "./components/conversion-funnel"
+import { AttributionChart } from "./components/attribution-chart"
+import { GeoDeviceBreakdown } from "./components/geo-device-breakdown"
+import { EventLog } from "./components/event-log"
 
 export default function Dashboard2() {
   return (
-    <div className="flex-1 space-y-6 px-6 pt-0">
-        {/* Enhanced Header */}
+    <div className="flex-1 space-y-8 px-6 pt-0 pb-8">
+      {/* Dashboard Header */}
+      {/* <div className="flex flex-col gap-2">
+        <h1 className="text-2xl font-bold tracking-tight">Analytics Dashboard</h1>
+        <p className="text-muted-foreground">
+          Privacy-first, cookieless analytics — comprehensive insights without compromising user privacy
+        </p>
+      </div> */}
 
-        <div className="flex md:flex-row flex-col md:items-center justify-between gap-4 md:gap-6">
-          <div className="flex flex-col gap-2">
-            <h1 className="text-2xl font-bold tracking-tight">Business Dashboard</h1>
-            <p className="text-muted-foreground">
-              Monitor your business performance and key metrics in real-time
-            </p>
-          </div>
-          <QuickActions />
+      {/* Main Dashboard Grid */}
+      <div className="@container/main space-y-8">
+
+        {/* Section 1: Core Engagement & Traffic Metrics */}
+        <TrafficMetrics />
+
+        {/* Section 2: Activity Over Time */}
+        <ActivityOverTime />
+
+        {/* Section 3: Traffic Sources & Campaign Performance */}
+        <div className="grid gap-6 grid-cols-1 @5xl:grid-cols-2">
+          <TrafficSources />
+          <ConversionFunnel />
         </div>
 
-        {/* Main Dashboard Grid */}
-        <div className="@container/main space-y-6">
-          {/* Top Row - Key Metrics */}
+        {/* Section 4: Attribution Analysis */}
+        <AttributionChart />
 
-          <MetricsOverview />
+        {/* Section 5: User Behavior & Segmentation */}
+        <GeoDeviceBreakdown />
 
-          {/* Second Row - Charts in 6-6 columns */}
-          <div className="grid gap-6 grid-cols-1 @5xl:grid-cols-2">
-            <SalesChart />
-            <RevenueBreakdown />
-          </div>
+        {/* Section 6: Raw Event Log */}
+        <EventLog />
 
-          {/* Third Row - Two Column Layout */}
-          <div className="grid gap-6 grid-cols-1 @5xl:grid-cols-2">
-            <RecentTransactions />
-            <TopProducts />
-          </div>
-
-          {/* Fourth Row - Customer Insights and Team Performance */}
-          <CustomerInsights />
-        </div>
       </div>
+    </div>
   )
 }

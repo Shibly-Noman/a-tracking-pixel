@@ -1,10 +1,10 @@
 "use client"
 
 import {
-  Package,
-  Download,
-  Users,
-  Star
+  Gauge,
+  ShieldCheck,
+  Zap,
+  Scale
 } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { DotPattern } from '@/components/dot-pattern'
@@ -12,28 +12,28 @@ import { DotPattern } from '@/components/dot-pattern'
 
 const stats = [
   {
-    icon: Package,
-    value: '500+',
-    label: 'Components',
-    description: 'Ready-to-use blocks'
+    icon: Gauge,
+    value: '1M+',
+    label: 'Events per second handled',
+    description: 'Built for the enterprise, our system scales with your traffic.'
   },
   {
-    icon: Download,
-    value: '25K+',
-    label: 'Downloads',
-    description: 'Trusted worldwide'
+    icon: ShieldCheck,
+    value: '99.99%',
+    label: 'Data Accuracy',
+    description: 'Precision attribution and session modeling without compromise.'
   },
   {
-    icon: Users,
-    value: '10K+',
-    label: 'Developers',
-    description: 'Active community'
+    icon: Zap,
+    value: '< 3KB',
+    label: 'Tracking Pixel',
+    description: 'Blazing-fast and privacy-compliant for optimal site performance.'
   },
   {
-    icon: Star,
-    value: '4.9',
-    label: 'Rating',
-    description: 'User satisfaction'
+    icon: Scale,
+    value: '100%',
+    label: 'Cookieless & Privacy Compliant',
+    description: 'GDPR, CCPA, and ePrivacy standards met by design.'
   }
 ]
 
@@ -45,6 +45,15 @@ export function StatsSection() {
       <DotPattern className="opacity-75" size="md" fadeStyle="circle" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="mx-auto max-w-3xl text-center mb-10">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+            Proven Performance. Unmatched Scale.
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            See how our platform transforms your data strategy, even at hyper-growth.
+          </p>
+        </div>
+
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (

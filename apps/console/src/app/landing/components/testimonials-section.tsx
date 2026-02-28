@@ -13,83 +13,25 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
-    name: 'Alexandra Mitchell',
-    role: 'Senior Frontend Developer',
+    name: 'Jane Doe',
+    role: 'Head of Marketing, InnovateCo',
     image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-1',
     quote:
-      'This platform has completely transformed our development workflow. The component system is so well-architected that even complex applications feel simple to build.',
+      'Implementing [Your Platform Name] was a game-changer. We finally have accurate attribution that aligns with privacy standards, and the real-time dashboards allow us to react faster than ever before.',
   },
   {
-    name: 'James Thompson',
-    role: 'Technical Lead',
+    name: 'John Smith',
+    role: 'CTO, Digital Frontiers',
     image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-1',
-    quote: 'After trying countless frameworks, this is the one that finally clicked. The documentation is exceptional.',
+    quote:
+      'The transition away from cookies was daunting, but [Your Platform Name] made it seamless. Their cookieless session modeling is incredibly intelligent, providing robust data without compromise.',
   },
   {
-    name: 'Priya Sharma',
-    role: 'Product Designer',
+    name: 'Sarah Chen',
+    role: 'Data Director, Global Insights Inc.',
     image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-2',
     quote:
-      'The design system is beautiful and consistent. I can prototype ideas quickly and hand them off to developers with confidence that the implementation will match perfectly.',
-  },
-  {
-    name: 'Robert Kim',
-    role: 'Engineering Manager',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-2',
-    quote:
-      'We migrated our entire application to this platform in just two weeks. The performance improvements were immediate.',
-  },
-  {
-    name: 'Maria Santos',
-    role: 'Full Stack Engineer',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-3',
-    quote:
-      'The accessibility features are top-notch. Building inclusive applications has never been easier. Every component follows best practices out of the box, and the automated testing suite ensures we maintain high accessibility standards throughout our development process.',
-  },
-  {
-    name: 'Thomas Anderson',
-    role: 'Solutions Architect',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-3',
-    quote: 'Scalability was our biggest concern, but this platform handles enterprise-level complexity with ease.',
-  },
-  {
-    name: 'Lisa Chang',
-    role: 'UX Researcher',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-4',
-    quote:
-      'User testing results have been consistently positive since we adopted this platform. The user experience is intuitive and the performance is stellar. Our user satisfaction scores have increased by 40% since the migration.',
-  },
-  {
-    name: 'Michael Foster',
-    role: 'DevOps Engineer',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-4',
-    quote: 'Deployment and maintenance are a breeze. The platform integrates seamlessly with our CI/CD pipeline.',
-  },
-  {
-    name: 'Sophie Laurent',
-    role: 'Creative Director',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-5',
-    quote:
-      'The creative possibilities are endless. We can bring any design concept to life without compromising on technical quality or user experience.',
-  },
-  {
-    name: 'Daniel Wilson',
-    role: 'Backend Developer',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-5',
-    quote: 'The API design is exceptional. Clean, intuitive, and well-documented.',
-  },
-  {
-    name: 'Natasha Petrov',
-    role: 'Mobile App Developer',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-6',
-    quote:
-      'Cross-platform development has never been this efficient. One codebase, multiple platforms, consistent user experience. This is the future. The responsive design system ensures our apps look perfect on every device.',
-  },
-  {
-    name: 'Carlos Rivera',
-    role: 'Startup Founder',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-6',
-    quote: 'As a non-technical founder, this platform gave me the confidence to build our MVP quickly.',
+      'We needed a scalable solution that could handle millions of events daily while respecting user privacy. [Your Platform Name] delivered on all fronts, exceeding our expectations.',
   },
 ]
 
@@ -101,10 +43,10 @@ export function TestimonialsSection() {
         <div className="mx-auto max-w-2xl text-center mb-16">
           <Badge variant="outline" className="mb-4">Testimonials</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Empowering Innovation Worldwide
+            What Our Customers Are Saying.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Join thousands of developers and teams who trust our platform to build exceptional digital experiences.
+            Hear from businesses thriving in the cookieless era with our platform.
           </p>
         </div>
 

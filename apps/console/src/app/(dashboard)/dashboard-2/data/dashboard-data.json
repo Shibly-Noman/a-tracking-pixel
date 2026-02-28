@@ -1,39 +1,174 @@
 {
-  "totalRevenue": 54231.89,
-  "revenueChange": 12.5,
-  "activeCustomers": 2350,
-  "customerChange": 5.2,
-  "totalOrders": 1247,
-  "orderChange": -2.1,
-  "conversionRate": 3.24,
-  "conversionChange": 8.3,
-  "salesData": [
-    { "month": "Jan", "sales": 12500, "target": 15000 },
-    { "month": "Feb", "sales": 18200, "target": 15000 },
-    { "month": "Mar", "sales": 16800, "target": 15000 },
-    { "month": "Apr", "sales": 22400, "target": 20000 },
-    { "month": "May", "sales": 24600, "target": 20000 },
-    { "month": "Jun", "sales": 28200, "target": 25000 },
-    { "month": "Jul", "sales": 31500, "target": 25000 },
-    { "month": "Aug", "sales": 29800, "target": 25000 },
-    { "month": "Sep", "sales": 33200, "target": 30000 },
-    { "month": "Oct", "sales": 35100, "target": 30000 },
-    { "month": "Nov", "sales": 38900, "target": 35000 },
-    { "month": "Dec", "sales": 42300, "target": 35000 }
+  "coreMetrics": {
+    "totalEvents": 1284750,
+    "eventsChange": 18.4,
+    "totalPageViews": 847320,
+    "pageViewsChange": 12.1,
+    "uniquePageViews": 523410,
+    "uniquePageViewsChange": 9.8,
+    "totalSessions": 198450,
+    "sessionsChange": 14.2,
+    "uniqueSessions": 156780,
+    "uniqueSessionsChange": 11.5,
+    "avgSessionDuration": 187,
+    "sessionDurationChange": 5.3,
+    "eventsPerSession": 6.47,
+    "eventsPerSessionChange": 3.7,
+    "bounceRate": 38.2,
+    "bounceRateChange": -4.1,
+    "newSessions": 89340,
+    "returningSessions": 67440
+  },
+  "activityOverTime": [
+    { "date": "Jan 1", "events": 38420, "pageViews": 24800, "sessions": 5840 },
+    { "date": "Jan 8", "events": 42150, "pageViews": 27300, "sessions": 6320 },
+    { "date": "Jan 15", "events": 39870, "pageViews": 25900, "sessions": 5980 },
+    { "date": "Jan 22", "events": 45230, "pageViews": 29400, "sessions": 6750 },
+    { "date": "Jan 29", "events": 48900, "pageViews": 31800, "sessions": 7210 },
+    { "date": "Feb 5", "events": 52340, "pageViews": 34100, "sessions": 7840 },
+    { "date": "Feb 12", "events": 49870, "pageViews": 32400, "sessions": 7450 },
+    { "date": "Feb 19", "events": 55120, "pageViews": 35900, "sessions": 8230 },
+    { "date": "Feb 26", "events": 58760, "pageViews": 38200, "sessions": 8760 },
+    { "date": "Mar 5", "events": 61340, "pageViews": 39900, "sessions": 9120 },
+    { "date": "Mar 12", "events": 64890, "pageViews": 42300, "sessions": 9680 },
+    { "date": "Mar 19", "events": 68230, "pageViews": 44500, "sessions": 10150 }
   ],
-  "revenueBreakdown": [
-    { "name": "Subscriptions", "value": 45, "amount": 24500, "color": "hsl(210, 100%, 50%)" },
-    { "name": "One-time Sales", "value": 30, "amount": 16300, "color": "hsl(280, 100%, 70%)" },
-    { "name": "Services", "value": 15, "amount": 8150, "color": "hsl(120, 100%, 40%)" },
-    { "name": "Partnerships", "value": 10, "amount": 5430, "color": "hsl(30, 100%, 50%)" }
+  "trafficSources": {
+    "bySource": [
+      { "source": "google", "sessions": 68420, "conversions": 2847, "conversionRate": 4.16 },
+      { "source": "direct", "sessions": 42180, "conversions": 1923, "conversionRate": 4.56 },
+      { "source": "facebook", "sessions": 28340, "conversions": 892, "conversionRate": 3.15 },
+      { "source": "newsletter", "sessions": 18920, "conversions": 1124, "conversionRate": 5.94 },
+      { "source": "linkedin", "sessions": 12450, "conversions": 687, "conversionRate": 5.52 },
+      { "source": "twitter", "sessions": 8760, "conversions": 234, "conversionRate": 2.67 },
+      { "source": "bing", "sessions": 6340, "conversions": 198, "conversionRate": 3.12 },
+      { "source": "other", "sessions": 13370, "conversions": 412, "conversionRate": 3.08 }
+    ],
+    "byMedium": [
+      { "medium": "organic", "sessions": 74760, "conversions": 3045, "conversionRate": 4.07 },
+      { "medium": "cpc", "sessions": 52340, "conversions": 1876, "conversionRate": 3.58 },
+      { "medium": "email", "sessions": 21450, "conversions": 1287, "conversionRate": 6.00 },
+      { "medium": "social", "sessions": 37100, "conversions": 1126, "conversionRate": 3.03 },
+      { "medium": "referral", "sessions": 13800, "conversions": 583, "conversionRate": 4.22 }
+    ],
+    "byCampaign": [
+      { "campaign": "Spring_Sale_2024", "sessions": 28450, "events": 184320, "conversions": 1423, "conversionRate": 5.00 },
+      { "campaign": "Product_Launch_Q3", "sessions": 19870, "events": 128540, "conversions": 987, "conversionRate": 4.97 },
+      { "campaign": "Retargeting_Q4", "sessions": 15230, "events": 98760, "conversions": 892, "conversionRate": 5.86 },
+      { "campaign": "Brand_Awareness", "sessions": 12450, "events": 80340, "conversions": 423, "conversionRate": 3.40 },
+      { "campaign": "Holiday_Promo", "sessions": 9870, "events": 63980, "conversions": 634, "conversionRate": 6.42 }
+    ],
+    "byReferrer": [
+      { "referrer": "google.com", "sessions": 68420, "percentage": 34.5 },
+      { "referrer": "direct", "sessions": 42180, "percentage": 21.3 },
+      { "referrer": "facebook.com", "sessions": 28340, "percentage": 14.3 },
+      { "referrer": "linkedin.com", "sessions": 12450, "percentage": 6.3 },
+      { "referrer": "newsletter", "sessions": 18920, "percentage": 9.5 },
+      { "referrer": "other", "sessions": 28140, "percentage": 14.2 }
+    ]
+  },
+  "conversions": {
+    "totalConversions": 8317,
+    "conversionRate": 4.19,
+    "totalRevenue": 284750,
+    "avgRevenuePerConversion": 34.24,
+    "byEventType": [
+      { "event": "purchase", "count": 3847, "revenue": 198450 },
+      { "event": "signup", "count": 2134, "revenue": 42680 },
+      { "event": "lead_submit", "count": 1456, "revenue": 29120 },
+      { "event": "trial_start", "count": 880, "revenue": 14500 }
+    ]
+  },
+  "attribution": {
+    "lastTouch": [
+      { "channel": "google", "conversions": 2847, "revenue": 97540 },
+      { "channel": "direct", "conversions": 1923, "revenue": 65890 },
+      { "channel": "facebook", "conversions": 892, "revenue": 30560 },
+      { "channel": "newsletter", "conversions": 1124, "revenue": 38490 },
+      { "channel": "linkedin", "conversions": 687, "revenue": 23540 },
+      { "channel": "other", "conversions": 844, "revenue": 28730 }
+    ],
+    "firstTouch": [
+      { "channel": "google", "conversions": 3241, "revenue": 110980 },
+      { "channel": "direct", "conversions": 1456, "revenue": 49870 },
+      { "channel": "facebook", "conversions": 1234, "revenue": 42280 },
+      { "channel": "newsletter", "conversions": 876, "revenue": 29990 },
+      { "channel": "linkedin", "conversions": 923, "revenue": 31620 },
+      { "channel": "other", "conversions": 587, "revenue": 20010 }
+    ],
+    "linear": [
+      { "channel": "google", "conversions": 2980, "revenue": 102060 },
+      { "channel": "direct", "conversions": 1687, "revenue": 57780 },
+      { "channel": "facebook", "conversions": 1045, "revenue": 35790 },
+      { "channel": "newsletter", "conversions": 1023, "revenue": 35030 },
+      { "channel": "linkedin", "conversions": 798, "revenue": 27330 },
+      { "channel": "other", "conversions": 784, "revenue": 26850 }
+    ],
+    "timeDecay": [
+      { "channel": "google", "conversions": 2912, "revenue": 99720 },
+      { "channel": "direct", "conversions": 1834, "revenue": 62820 },
+      { "channel": "facebook", "conversions": 967, "revenue": 33120 },
+      { "channel": "newsletter", "conversions": 1089, "revenue": 37290 },
+      { "channel": "linkedin", "conversions": 734, "revenue": 25140 },
+      { "channel": "other", "conversions": 781, "revenue": 26750 }
+    ],
+    "avgTouchpoints": 3.4
+  },
+  "funnel": [
+    { "stage": "Homepage View", "users": 156780, "dropoff": 0, "completionRate": 100 },
+    { "stage": "Product Page", "users": 98450, "dropoff": 58330, "completionRate": 62.8 },
+    { "stage": "Add to Cart", "users": 42180, "dropoff": 56270, "completionRate": 42.8 },
+    { "stage": "Checkout", "users": 18920, "dropoff": 23260, "completionRate": 44.8 },
+    { "stage": "Purchase", "users": 8317, "dropoff": 10603, "completionRate": 44.0 }
   ],
-  "customerGrowth": [
-    { "month": "Jan", "new": 245, "returning": 890, "churn": 45 },
-    { "month": "Feb", "new": 312, "returning": 934, "churn": 52 },
-    { "month": "Mar", "new": 289, "returning": 1023, "churn": 38 },
-    { "month": "Apr", "new": 456, "returning": 1156, "churn": 61 },
-    { "month": "May", "new": 523, "returning": 1298, "churn": 47 },
-    { "month": "Jun", "new": 634, "returning": 1445, "churn": 55 }
+  "behavior": {
+    "topPages": [
+      { "url": "/", "views": 98450, "uniqueViews": 76230, "avgDuration": 145 },
+      { "url": "/products", "views": 72340, "uniqueViews": 58920, "avgDuration": 234 },
+      { "url": "/pricing", "views": 48920, "uniqueViews": 41230, "avgDuration": 312 },
+      { "url": "/blog", "views": 38450, "uniqueViews": 32180, "avgDuration": 287 },
+      { "url": "/about", "views": 24780, "uniqueViews": 21340, "avgDuration": 178 },
+      { "url": "/contact", "views": 18920, "uniqueViews": 16780, "avgDuration": 198 }
+    ],
+    "deviceBreakdown": [
+      { "device": "Desktop", "sessions": 98450, "percentage": 49.6 },
+      { "device": "Mobile", "sessions": 78920, "percentage": 39.8 },
+      { "device": "Tablet", "sessions": 21080, "percentage": 10.6 }
+    ],
+    "browserBreakdown": [
+      { "browser": "Chrome", "sessions": 108450, "percentage": 54.7 },
+      { "browser": "Safari", "sessions": 48920, "percentage": 24.7 },
+      { "browser": "Firefox", "sessions": 22340, "percentage": 11.3 },
+      { "browser": "Edge", "sessions": 14780, "percentage": 7.5 },
+      { "browser": "Other", "sessions": 3960, "percentage": 2.0 }
+    ],
+    "geoBreakdown": [
+      { "country": "United States", "sessions": 68420, "percentage": 34.5 },
+      { "country": "United Kingdom", "sessions": 24780, "percentage": 12.5 },
+      { "country": "Germany", "sessions": 18920, "percentage": 9.5 },
+      { "country": "Canada", "sessions": 15340, "percentage": 7.7 },
+      { "country": "Australia", "sessions": 12450, "percentage": 6.3 },
+      { "country": "France", "sessions": 9870, "percentage": 5.0 },
+      { "country": "India", "sessions": 8760, "percentage": 4.4 },
+      { "country": "Other", "sessions": 39910, "percentage": 20.1 }
+    ],
+    "customEvents": [
+      { "event": "button_click", "count": 284750, "uniqueSessions": 98450 },
+      { "event": "video_play", "count": 48920, "uniqueSessions": 38450 },
+      { "event": "form_submit", "count": 18920, "uniqueSessions": 16780 },
+      { "event": "download", "count": 12450, "uniqueSessions": 11230 },
+      { "event": "scroll_depth_75", "count": 98450, "uniqueSessions": 72340 }
+    ]
+  },
+  "eventLog": [
+    { "id": "evt_001", "eventName": "page_view", "sessionId": "sess_a1b2c3", "timestamp": "2024-03-19T14:23:45Z", "url": "/products", "hashedIp": "a3f8b2c1d4e5", "meta": { "title": "Products Page" } },
+    { "id": "evt_002", "eventName": "button_click", "sessionId": "sess_a1b2c3", "timestamp": "2024-03-19T14:24:12Z", "url": "/products", "hashedIp": "a3f8b2c1d4e5", "meta": { "element": "add_to_cart", "product_id": "prod_123" } },
+    { "id": "evt_003", "eventName": "page_view", "sessionId": "sess_d4e5f6", "timestamp": "2024-03-19T14:25:01Z", "url": "/pricing", "hashedIp": "b7c8d9e0f1a2", "meta": { "title": "Pricing Page" } },
+    { "id": "evt_004", "eventName": "form_submit", "sessionId": "sess_d4e5f6", "timestamp": "2024-03-19T14:26:34Z", "url": "/contact", "hashedIp": "b7c8d9e0f1a2", "meta": { "form_id": "contact_form" } },
+    { "id": "evt_005", "eventName": "purchase", "sessionId": "sess_g7h8i9", "timestamp": "2024-03-19T14:27:55Z", "url": "/checkout/success", "hashedIp": "c3d4e5f6a7b8", "meta": { "revenue": 49.99, "product": "Pro Plan" } },
+    { "id": "evt_006", "eventName": "video_play", "sessionId": "sess_j1k2l3", "timestamp": "2024-03-19T14:28:22Z", "url": "/", "hashedIp": "d9e0f1a2b3c4", "meta": { "video_id": "demo_video", "duration": 120 } },
+    { "id": "evt_007", "eventName": "page_view", "sessionId": "sess_m4n5o6", "timestamp": "2024-03-19T14:29:10Z", "url": "/blog/analytics-guide", "hashedIp": "e5f6a7b8c9d0", "meta": { "title": "Analytics Guide" } },
+    { "id": "evt_008", "eventName": "scroll_depth_75", "sessionId": "sess_m4n5o6", "timestamp": "2024-03-19T14:31:45Z", "url": "/blog/analytics-guide", "hashedIp": "e5f6a7b8c9d0", "meta": { "depth": 75 } }
   ],
   "lastUpdated": "2025-08-12T15:30:00Z"
 }

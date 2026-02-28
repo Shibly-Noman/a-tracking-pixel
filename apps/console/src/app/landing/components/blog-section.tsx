@@ -4,31 +4,32 @@ import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 
 const blogs = [
     {
       id: 1,
       image: 'https://ui.shadcn.com/placeholder.svg',
-      category: 'Technology',
-      title: 'AI Development Catalysts',
+      category: 'Cookieless Tracking',
+      title: 'The End of the Cookie: What It Means for Your Marketing Strategy',
       description:
-        'Exploring how AI-driven tools are transforming software development workflows and accelerating innovation.',
+        'An in-depth look at the impact of cookie deprecation and how to prepare.',
     },
     {
       id: 2,
       image: 'https://ui.shadcn.com/placeholder.svg',
-      category: 'Lifestyle',
-      title: 'Minimalist Living Guide',
+      category: 'Privacy',
+      title: 'Building Trust: How Privacy-First Analytics Drives Customer Loyalty',
       description:
-        'Minimalist living approaches that can help reduce stress and create more meaningful daily experiences.',
+        'Exploring the benefits of a privacy-centric approach to data collection.',
     },
     {
       id: 3,
       image: 'https://ui.shadcn.com/placeholder.svg',
-      category: 'Design',
-      title: 'Accessible UI Trends',
+      category: 'Attribution',
+      title: 'Beyond Last-Click: Choosing the Right Attribution Model for Your Business',
       description:
-        'How modern UI trends are embracing accessibility while maintaining sleek, intuitive user experiences.',
+        'A guide to understanding and implementing various attribution methodologies.',
     },
   ]
 
@@ -40,10 +41,10 @@ export function BlogSection() {
         <div className="mx-auto max-w-2xl text-center mb-16">
           <Badge variant="outline" className="mb-4">Latest Insights</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            From our blog
+            Insights for the Evolving Digital Landscape.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Stay updated with the latest trends, best practices, and insights from our team of experts.
+            Stay ahead with expert articles on cookieless tracking, privacy, and digital attribution.
           </p>
         </div>
 
@@ -79,13 +80,26 @@ export function BlogSection() {
                     onClick={e => e.preventDefault()}
                     className="inline-flex items-center gap-2 text-primary hover:underline cursor-pointer"
                   >
-                    Learn More
+                    Read Article
                     <ArrowRight className="size-4" />
                   </a>
                 </div>
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Button className="cursor-pointer" asChild>
+            <a
+              href="#"
+              onClick={e => e.preventDefault()}
+              className="inline-flex items-center gap-2"
+            >
+              Visit Our Blog
+              <ArrowRight className="size-4" />
+            </a>
+          </Button>
         </div>
       </div>
     </section>
