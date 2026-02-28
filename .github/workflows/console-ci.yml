@@ -81,9 +81,28 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     needs: [lint, type-check]
+    permissions:
+      deployments: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Create GitHub deployment (pending)
+        id: deployment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const deployment = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.sha,
+              environment: 'preview',
+              description: 'Console CI build check',
+              auto_merge: false,
+              required_contexts: [],
+              transient_environment: true,
+            });
+            core.setOutput('deployment_id', deployment.data.id);
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
@@ -101,12 +120,41 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build console app
+        id: build
         run: pnpm --filter @pik-pixel/console build
         env:
-          # Disable Next.js telemetry in CI
           NEXT_TELEMETRY_DISABLED: 1
 
+      - name: Set deployment status (success)
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ steps.deployment.outputs.deployment_id }},
+              state: 'success',
+              description: 'Console build passed',
+              environment: 'preview',
+            });
+
+      - name: Set deployment status (failure)
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ steps.deployment.outputs.deployment_id }},
+              state: 'failure',
+              description: 'Console build failed',
+              environment: 'preview',
+            });
+
       - name: Upload build artifacts
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: console-build-${{ github.sha }}

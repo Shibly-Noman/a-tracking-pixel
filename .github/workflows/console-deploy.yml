@@ -1,0 +1,128 @@
+name: Console Deploy (Production)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/console/**'
+      - 'packages/@pik-pixel/**'
+      - 'pnpm-workspace.yaml'
+      - 'turbo.json'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/console-deploy.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build & Deploy Console (Production)
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ steps.deployment_status.outputs.environment_url }}
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create GitHub deployment (in_progress)
+        id: deployment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const deployment = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.sha,
+              environment: 'production',
+              description: 'Console production deployment',
+              auto_merge: false,
+              required_contexts: [],
+              production_environment: true,
+            });
+            core.setOutput('deployment_id', deployment.data.id);
+
+      - name: Set deployment status (in_progress)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ steps.deployment.outputs.deployment_id }},
+              state: 'in_progress',
+              description: 'Building and deploying console app…',
+              environment: 'production',
+            });
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build console app
+        run: pnpm --filter @pik-pixel/console build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          # Add your production environment variables here as secrets:
+          # AUTH0_SECRET: ${{ secrets.AUTH0_SECRET }}
+          # AUTH0_BASE_URL: ${{ secrets.AUTH0_BASE_URL }}
+          # AUTH0_ISSUER_BASE_URL: ${{ secrets.AUTH0_ISSUER_BASE_URL }}
+          # AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+          # AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+
+      # ── Replace the step below with your actual deployment target ────────────
+      # Examples: Vercel, AWS, Fly.io, Docker, etc.
+      # - name: Deploy to Vercel
+      #   run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+      #   working-directory: apps/console
+      # ─────────────────────────────────────────────────────────────────────────
+
+      - name: Set deployment status (success)
+        id: deployment_status
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Replace with your actual deployed URL once a deployment target is configured
+            const environmentUrl = 'https://console.pik-pixel.com';
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ steps.deployment.outputs.deployment_id }},
+              state: 'success',
+              description: 'Console deployed to production',
+              environment: 'production',
+              environment_url: environmentUrl,
+              auto_inactive: true,
+            });
+            core.setOutput('environment_url', environmentUrl);
+
+      - name: Set deployment status (failure)
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ steps.deployment.outputs.deployment_id }},
+              state: 'failure',
+              description: 'Console production deployment failed',
+              environment: 'production',
+            });
