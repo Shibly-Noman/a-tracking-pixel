@@ -10,22 +10,22 @@
 ## Table of Contents
 
 1.  [Project Overview](#1-project-overview)
-    *   [Problem Statement](#problem-statement)
-    *   [Solution & Core Features](#solution--core-features)
-    *   [Architectural Principles](#architectural-principles)
+    - [Problem Statement](#problem-statement)
+    - [Solution & Core Features](#solution--core-features)
+    - [Architectural Principles](#architectural-principles)
 2.  [Demo Preview](#2-demo-preview)
 3.  [High-Level Architecture](#3-high-level-architecture)
 4.  [Monorepo Structure (Turborepo)](#4-monorepo-structure-turborepo)
-    *   [Apps](#apps)
-    *   [Services](#services)
-    *   [Packages (Internal Libraries)](#packages-internal-libraries)
-    *   [Infrastructure (IaC)](#infrastructure-iac)
+    - [Apps](#apps)
+    - [Services](#services)
+    - [Packages (Internal Libraries)](#packages-internal-libraries)
+    - [Infrastructure (IaC)](#infrastructure-iac)
 5.  [Technology Stack](#5-technology-stack)
 6.  [Getting Started](#6-getting-started)
-    *   [Prerequisites](#prerequisites)
-    *   [Local Development Setup](#local-development-setup)
-    *   [Running Services](#running-services)
-    *   [Building & Testing](#building--testing)
+    - [Prerequisites](#prerequisites)
+    - [Local Development Setup](#local-development-setup)
+    - [Running Services](#running-services)
+    - [Building & Testing](#building--testing)
 7.  [Deployment](#7-deployment)
 8.  [Contributing](#8-contributing)
 9.  [Security & Privacy](#9-security--privacy)
@@ -46,23 +46,23 @@ The deprecation of third-party cookies, coupled with increasing user privacy dem
 
 Our platform addresses these challenges by offering:
 
-*   **Cookieless Tracking:** Collects first-party behavioral events without using cookies or local storage, relying on advanced server-side heuristics.
-*   **Anonymous Session Modeling:** Generates unique, privacy-preserving session IDs based on hashed client characteristics, ensuring no persistent cross-site identifiers.
-*   **Flexible Attribution:** Supports various attribution models (First-Touch, Last-Touch, Time-Decay) configurable per project.
-*   **Real-time Analytics:** Provides low-latency dashboards for immediate insights into event streams, conversion rates, and campaign performance.
-*   **Privacy by Design:** Immediate IP hashing, no raw personal data storage, configurable data retention, and compliance with major privacy regulations (GDPR, CCPA).
-*   **Extreme Scalability:** Built on an event-driven, distributed architecture capable of handling millions of events per second.
+- **Cookieless Tracking:** Collects first-party behavioral events without using cookies or local storage, relying on advanced server-side heuristics.
+- **Anonymous Session Modeling:** Generates unique, privacy-preserving session IDs based on hashed client characteristics, ensuring no persistent cross-site identifiers.
+- **Flexible Attribution:** Supports various attribution models (First-Touch, Last-Touch, Time-Decay) configurable per project.
+- **Real-time Analytics:** Provides low-latency dashboards for immediate insights into event streams, conversion rates, and campaign performance.
+- **Privacy by Design:** Immediate IP hashing, no raw personal data storage, configurable data retention, and compliance with major privacy regulations (GDPR, CCPA).
+- **Extreme Scalability:** Built on an event-driven, distributed architecture capable of handling millions of events per second.
 
 ### Architectural Principles
 
-*   **Privacy by Design:** Integrated into every layer, from ingestion to storage.
-*   **Stateless Ingestion:** Maximizes throughput and horizontal scalability.
-*   **Event Immutability:** Events are recorded as they happen, ensuring data integrity.
-*   **Horizontal Scalability:** All core components are designed to scale out independently.
-*   **Queue-Based Decoupling:** Enhances reliability, resilience, and allows for backpressure handling.
-*   **Write-Optimized Storage:** For high-volume raw event ingestion.
-*   **Low-Latency Read API:** For real-time dashboard responsiveness.
-*   **Domain-Driven Design (DDD):** Clear boundaries and responsibilities for each service.
+- **Privacy by Design:** Integrated into every layer, from ingestion to storage.
+- **Stateless Ingestion:** Maximizes throughput and horizontal scalability.
+- **Event Immutability:** Events are recorded as they happen, ensuring data integrity.
+- **Horizontal Scalability:** All core components are designed to scale out independently.
+- **Queue-Based Decoupling:** Enhances reliability, resilience, and allows for backpressure handling.
+- **Write-Optimized Storage:** For high-volume raw event ingestion.
+- **Low-Latency Read API:** For real-time dashboard responsiveness.
+- **Domain-Driven Design (DDD):** Clear boundaries and responsibilities for each service.
 
 ---
 
@@ -80,7 +80,9 @@ A visual overview of the platform's key screens and analytics capabilities.
       <img src="public/img/attribution-analysis.jpg" alt="Attribution Analysis" width="100%" /><br/>
       <sub><b>Attribution Analysis</b></sub>
     </td>
-    <td align="center" width="50%">
+  </tr>
+  <tr>
+      <td align="center" width="50%">
       <img src="public/img/rwe.jpg" alt="Real-time Event Stream" width="100%" /><br/>
       <sub><b>Real-time Event Stream</b></sub>
     </td>
@@ -169,51 +171,51 @@ This project uses [Turborepo](https://turborepo.org) to manage a monorepo contai
 
 ### Apps
 
-*   **`apps/dashboard`**: The main user interface for viewing analytics, configuring projects, and managing attribution models. Built with Next.js and React.
-*   **`apps/query-api`**: A Node.js API layer that serves data from the `Aggregated Metrics Store` and `Raw Event Store` to the `dashboard`. Handles authentication, authorization, and data aggregation for display.
-*   **`apps/tracking-pixel`**: The JavaScript client-side library embedded on customer websites. Responsible for capturing `page_view` and custom events, UTM parameters, and sending them reliably to the `Edge / CDN Layer`.
+- **`apps/dashboard`**: The main user interface for viewing analytics, configuring projects, and managing attribution models. Built with Next.js and React.
+- **`apps/query-api`**: A Node.js API layer that serves data from the `Aggregated Metrics Store` and `Raw Event Store` to the `dashboard`. Handles authentication, authorization, and data aggregation for display.
+- **`apps/tracking-pixel`**: The JavaScript client-side library embedded on customer websites. Responsible for capturing `page_view` and custom events, UTM parameters, and sending them reliably to the `Edge / CDN Layer`.
 
 ### Services
 
-*   **`services/ingestion-api`**: A high-throughput Go service. It receives events from the `Edge Worker`, performs immediate IP hashing, generates cookieless session IDs, validates basic event structure, and pushes raw events to the `Message Queue`.
-*   **`services/event-transformer`**: A Go stream processing service. It consumes raw events from the `Message Queue`, normalizes their schema, enriches them with data like geo-location and device type, and publishes the enriched events to another `Message Queue` topic for the `Attribution Engine`.
-*   **`services/attribution-engine`**: A Go stream processing service. It consumes enriched events, maintains anonymous session state, applies configured attribution models (First-Touch, Last-Touch, Time-Decay), computes aggregated metrics (e.g., funnels, conversion rates), and persists the results to the `Aggregated Metrics Store` and `Raw Event Store`.
-*   **`services/edge-worker`**: A TypeScript application deployed to an Edge/CDN platform (e.g., Cloudflare Workers). It acts as the initial entry point for pixel events, performing rate limiting, basic validation, and forwarding events to the `Ingestion API`.
-*   **`services/admin-service`**: (Future) A Go service providing internal administrative functionalities, such as managing projects, users, and implementing the configurable data retention and event deletion APIs.
+- **`services/ingestion-api`**: A high-throughput Go service. It receives events from the `Edge Worker`, performs immediate IP hashing, generates cookieless session IDs, validates basic event structure, and pushes raw events to the `Message Queue`.
+- **`services/event-transformer`**: A Go stream processing service. It consumes raw events from the `Message Queue`, normalizes their schema, enriches them with data like geo-location and device type, and publishes the enriched events to another `Message Queue` topic for the `Attribution Engine`.
+- **`services/attribution-engine`**: A Go stream processing service. It consumes enriched events, maintains anonymous session state, applies configured attribution models (First-Touch, Last-Touch, Time-Decay), computes aggregated metrics (e.g., funnels, conversion rates), and persists the results to the `Aggregated Metrics Store` and `Raw Event Store`.
+- **`services/edge-worker`**: A TypeScript application deployed to an Edge/CDN platform (e.g., Cloudflare Workers). It acts as the initial entry point for pixel events, performing rate limiting, basic validation, and forwarding events to the `Ingestion API`.
+- **`services/admin-service`**: (Future) A Go service providing internal administrative functionalities, such as managing projects, users, and implementing the configurable data retention and event deletion APIs.
 
 ### Packages (Internal Libraries)
 
-*   **`packages/ui`**: A collection of reusable React components to ensure consistency across the `dashboard`.
-*   **`packages/@platform/types`**: TypeScript interfaces and types for common data structures (events, API payloads, database records), shared across all TypeScript-based applications and services.
-*   **`packages/@platform/go-sdk`**: A Go module containing shared Go types, common Kafka client wrappers, database client interfaces, and utility functions used by all Go services.
-*   **`packages/@platform/eslint-config`**: Standardized ESLint configurations to enforce code style and quality across TypeScript/JavaScript projects.
-*   **`packages/@platform/tsconfig`**: Reusable TypeScript configurations to ensure consistent compiler options.
-*   **`packages/@platform/proto`**: Contains Protocol Buffer `.proto` definitions for event schemas and optionally for internal gRPC communication, along with generated client/server code.
+- **`packages/ui`**: A collection of reusable React components to ensure consistency across the `dashboard`.
+- **`packages/@platform/types`**: TypeScript interfaces and types for common data structures (events, API payloads, database records), shared across all TypeScript-based applications and services.
+- **`packages/@platform/go-sdk`**: A Go module containing shared Go types, common Kafka client wrappers, database client interfaces, and utility functions used by all Go services.
+- **`packages/@platform/eslint-config`**: Standardized ESLint configurations to enforce code style and quality across TypeScript/JavaScript projects.
+- **`packages/@platform/tsconfig`**: Reusable TypeScript configurations to ensure consistent compiler options.
+- **`packages/@platform/proto`**: Contains Protocol Buffer `.proto` definitions for event schemas and optionally for internal gRPC communication, along with generated client/server code.
 
 ### Infrastructure (IaC)
 
-*   **`infra/kubernetes`**: Kubernetes YAML manifests for deploying services, configuring ingress, services, config maps, and secrets.
-*   **`infra/helm`**: Helm charts for templating and managing Kubernetes deployments, including third-party components like Kafka, ClickHouse, and PostgreSQL.
-*   **`infra/terraform`**: Terraform modules for provisioning core cloud infrastructure (VPC, Kubernetes clusters, managed databases, message queues).
-*   **`infra/environments`**: Environment-specific Terraform configurations (e.g., `dev`, `staging`, `prod`).
+- **`infra/kubernetes`**: Kubernetes YAML manifests for deploying services, configuring ingress, services, config maps, and secrets.
+- **`infra/helm`**: Helm charts for templating and managing Kubernetes deployments, including third-party components like Kafka, ClickHouse, and PostgreSQL.
+- **`infra/terraform`**: Terraform modules for provisioning core cloud infrastructure (VPC, Kubernetes clusters, managed databases, message queues).
+- **`infra/environments`**: Environment-specific Terraform configurations (e.g., `dev`, `staging`, `prod`).
 
 ---
 
 ## 5. Technology Stack
 
-*   **Monorepo Tool:** Turborepo
-*   **Backend Languages:** Go (primary for services), TypeScript/Node.js (for Query API)
-*   **Frontend Language:** TypeScript
-*   **Frontend Framework:** Next.js, React
-*   **Edge Compute:** Cloudflare Workers (or Fastly Compute)
-*   **Message Queue:** Apache Kafka (or NATS, Redis Streams)
-*   **Raw Event Store:** ClickHouse (or Google BigQuery, Apache Druid)
-*   **Aggregated Metrics Store:** PostgreSQL
-*   **Container Orchestration:** Kubernetes
-*   **Infrastructure as Code:** Terraform, Helm
-*   **CI/CD:** GitHub Actions
-*   **Observability:** Prometheus, Grafana, OpenTelemetry, Structured Logging
-*   **Database ORMs/Clients:** `pgx` (Go), `TypeORM`/`Prisma` (Node.js), `go-clickhouse/clickhouse` (Go), `clickhouse-js` (Node.js)
+- **Monorepo Tool:** Turborepo
+- **Backend Languages:** Go (primary for services), TypeScript/Node.js (for Query API)
+- **Frontend Language:** TypeScript
+- **Frontend Framework:** Next.js, React
+- **Edge Compute:** Cloudflare Workers (or Fastly Compute)
+- **Message Queue:** Apache Kafka (or NATS, Redis Streams)
+- **Raw Event Store:** ClickHouse (or Google BigQuery, Apache Druid)
+- **Aggregated Metrics Store:** PostgreSQL
+- **Container Orchestration:** Kubernetes
+- **Infrastructure as Code:** Terraform, Helm
+- **CI/CD:** GitHub Actions
+- **Observability:** Prometheus, Grafana, OpenTelemetry, Structured Logging
+- **Database ORMs/Clients:** `pgx` (Go), `TypeORM`/`Prisma` (Node.js), `go-clickhouse/clickhouse` (Go), `clickhouse-js` (Node.js)
 
 ---
 
@@ -223,44 +225,51 @@ This project uses [Turborepo](https://turborepo.org) to manage a monorepo contai
 
 Before you begin, ensure you have the following installed:
 
-*   [Node.js](https://nodejs.org/) (LTS recommended)
-*   [npm](https://www.npmjs.com/) (comes with Node.js) or [Yarn](https://yarnpkg.com/)
-*   [Go](https://go.dev/) (version 1.21+)
-*   [Docker](https://www.docker.com/)
-*   [Docker Compose](https://docs.docker.com/compose/)
-*   [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (if working with Kubernetes locally)
-*   [Helm](https://helm.sh/docs/intro/install/) (if working with Helm charts)
-*   [Terraform](https://www.terraform.io/downloads.html) (if managing cloud infrastructure)
-*   [Cloudflare Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/) (for `edge-worker` development)
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js) or [Yarn](https://yarnpkg.com/)
+- [Go](https://go.dev/) (version 1.21+)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (if working with Kubernetes locally)
+- [Helm](https://helm.sh/docs/intro/install/) (if working with Helm charts)
+- [Terraform](https://www.terraform.io/downloads.html) (if managing cloud infrastructure)
+- [Cloudflare Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/) (for `edge-worker` development)
 
 ### Local Development Setup
 
 1.  **Clone the repository:**
+
     ```bash
     git clone https://github.com/your-org/platform.git
     cd platform
     ```
 
 2.  **Install root dependencies:**
+
     ```bash
     npm install # or yarn install
     ```
+
     This will install Turborepo and root-level dev dependencies.
 
 3.  **Install workspace dependencies:**
     For Node.js/TypeScript workspaces:
+
     ```bash
     turbo run install # This will run npm install in each JS/TS workspace
     ```
+
     For Go workspaces, dependencies are managed by `go mod tidy` within each service.
 
 4.  **Set up local infrastructure (Docker Compose):**
     A `docker-compose.yml` file in `scripts/local-infra/` can bring up Kafka, ClickHouse, and PostgreSQL.
+
     ```bash
     cd scripts/local-infra
     docker-compose up -d
     ```
-    *Refer to `scripts/local-infra/README.md` for detailed local infrastructure setup.*
+
+    _Refer to `scripts/local-infra/README.md` for detailed local infrastructure setup._
 
 5.  **Configure environment variables:**
     Each service in `apps/` and `services/` has an `.env.example` file. Copy these to `.env` and fill in the necessary values for local development (e.g., database connection strings, Kafka broker addresses).
@@ -269,52 +278,59 @@ Before you begin, ensure you have the following installed:
 
 You can run individual services in development mode using Turborepo.
 
-*   **Run all services in dev mode (parallel):**
-    ```bash
-    npm run dev
-    ```
-    This will start `dashboard`, `query-api`, and any other `dev` scripts defined in `turbo.json`.
+- **Run all services in dev mode (parallel):**
 
-*   **Run a specific service in dev mode:**
-    ```bash
-    turbo run dev --filter=dashboard
-    turbo run dev --filter=query-api
-    ```
-    For Go services, you might use `go run main.go` or a specific script within the service directory if a `dev` script isn't defined in `package.json`.
+  ```bash
+  npm run dev
+  ```
 
-    *   **Go services (e.g., `ingestion-api`):**
-        ```bash
-        cd services/ingestion-api
-        go run main.go
-        ```
+  This will start `dashboard`, `query-api`, and any other `dev` scripts defined in `turbo.json`.
+
+- **Run a specific service in dev mode:**
+
+  ```bash
+  turbo run dev --filter=dashboard
+  turbo run dev --filter=query-api
+  ```
+
+  For Go services, you might use `go run main.go` or a specific script within the service directory if a `dev` script isn't defined in `package.json`.
+  - **Go services (e.g., `ingestion-api`):**
+    ```bash
+    cd services/ingestion-api
+    go run main.go
+    ```
 
 ### Building & Testing
 
-*   **Build all workspaces:**
-    ```bash
-    npm run build
-    ```
+- **Build all workspaces:**
 
-*   **Build a specific workspace:**
-    ```bash
-    turbo run build --filter=ingestion-api
-    turbo run build --filter=dashboard
-    ```
+  ```bash
+  npm run build
+  ```
 
-*   **Run tests for all workspaces:**
-    ```bash
-    npm run test
-    ```
+- **Build a specific workspace:**
 
-*   **Run tests for a specific workspace:**
-    ```bash
-    turbo run test --filter=query-api
-    ```
+  ```bash
+  turbo run build --filter=ingestion-api
+  turbo run build --filter=dashboard
+  ```
 
-*   **Run linting for all workspaces:**
-    ```bash
-    npm run lint
-    ```
+- **Run tests for all workspaces:**
+
+  ```bash
+  npm run test
+  ```
+
+- **Run tests for a specific workspace:**
+
+  ```bash
+  turbo run test --filter=query-api
+  ```
+
+- **Run linting for all workspaces:**
+  ```bash
+  npm run lint
+  ```
 
 ---
 
@@ -322,11 +338,11 @@ You can run individual services in development mode using Turborepo.
 
 Deployment is managed via Infrastructure as Code (IaC) using Terraform for cloud resources and Helm charts deployed to Kubernetes. GitHub Actions handle CI/CD, triggering deployments to `dev`, `staging`, and `prod` environments upon merging to respective branches.
 
-*   **Kubernetes:** Services are containerized with Docker and deployed to Kubernetes clusters.
-*   **Terraform:** Manages cloud infrastructure (VPCs, EKS/GKE clusters, managed databases).
-*   **Helm:** Packages and deploys applications to Kubernetes, managing dependencies and configurations.
+- **Kubernetes:** Services are containerized with Docker and deployed to Kubernetes clusters.
+- **Terraform:** Manages cloud infrastructure (VPCs, EKS/GKE clusters, managed databases).
+- **Helm:** Packages and deploys applications to Kubernetes, managing dependencies and configurations.
 
-*Refer to the `infra/` directory for detailed deployment configurations and documentation.*
+_Refer to the `infra/` directory for detailed deployment configurations and documentation._
 
 ---
 
@@ -340,13 +356,13 @@ We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for 
 
 This platform is built with a strong emphasis on security and privacy:
 
-*   **TLS Everywhere:** All communications are encrypted.
-*   **IP Hashing:** User IP addresses are hashed immediately upon ingestion; raw IPs are never stored.
-*   **Cookieless Sessions:** Anonymous session IDs are generated without reliance on persistent cross-site identifiers.
-*   **Configurable Data Retention:** Data retention policies are configurable at a project level.
-*   **GDPR & CCPA Compliance:** Designed to align with major global privacy regulations.
-*   **Role-Based Access Control (RBAC):** For dashboard and API access.
-*   **Rate Limiting & Abuse Detection:** To protect against malicious activity.
+- **TLS Everywhere:** All communications are encrypted.
+- **IP Hashing:** User IP addresses are hashed immediately upon ingestion; raw IPs are never stored.
+- **Cookieless Sessions:** Anonymous session IDs are generated without reliance on persistent cross-site identifiers.
+- **Configurable Data Retention:** Data retention policies are configurable at a project level.
+- **GDPR & CCPA Compliance:** Designed to align with major global privacy regulations.
+- **Role-Based Access Control (RBAC):** For dashboard and API access.
+- **Rate Limiting & Abuse Detection:** To protect against malicious activity.
 
 For security concerns, please refer to our [SECURITY.md](SECURITY.md).
 
