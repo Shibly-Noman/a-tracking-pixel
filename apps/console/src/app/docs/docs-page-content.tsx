@@ -1,6 +1,6 @@
 "use client"
 
-// PastePixel API Documentation Page
+// PeakPixel API Documentation Page
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
@@ -349,7 +349,7 @@ export function DocsPageContent() {
             </Button>
             <Link href="/landing" className="flex items-center gap-2 cursor-pointer">
               <Logo size={28} />
-              <span className="font-bold text-lg">PastePixel</span>
+              <span className="font-bold text-lg">PeakPixel</span>
             </Link>
             <Separator orientation="vertical" className="h-5 hidden sm:block" />
             <span className="hidden sm:block text-sm text-muted-foreground">API Documentation</span>
@@ -407,8 +407,8 @@ export function DocsPageContent() {
               </div>
 
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Welcome to the official <strong className="text-foreground">PastePixel API</strong> documentation.
-                In order to use the PastePixel API you must have a{' '}
+                Welcome to the official <strong className="text-foreground">PeakPixel API</strong> documentation.
+                In order to use the PeakPixel API you must have a{' '}
                 <strong className="text-foreground">premium</strong> or{' '}
                 <strong className="text-foreground">early bird</strong> account. Feel free to check out our{' '}
                 <Link href="#pricing" className="text-primary underline underline-offset-4 hover:no-underline">
@@ -419,7 +419,7 @@ export function DocsPageContent() {
 
               <p className="text-muted-foreground leading-relaxed mb-4">
                 The latest version of the API is <Badge variant="outline">v1</Badge> currently. Using this API,
-                you are able to integrate PastePixel into your own applications and automatically track mails.
+                you are able to integrate PeakPixel into your own applications and automatically track mails.
                 This API allows you to create new mail trackings, tracking pixels and trackable URLs. We also
                 provide endpoints to delete your mail tracking or a trackable URL.
               </p>
@@ -449,7 +449,7 @@ export function DocsPageContent() {
               <div className="grid sm:grid-cols-2 gap-4 mb-6">
                 <div className="rounded-lg border border-border p-4">
                   <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">Base URL</p>
-                  <code className="text-sm font-mono text-foreground">https://pastepixel.com/api/v1</code>
+                  <code className="text-sm font-mono text-foreground">https://peakpixel.com/api/v1</code>
                 </div>
                 <div className="rounded-lg border border-border p-4">
                   <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">Rate Limit</p>
@@ -497,7 +497,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X POST https://pastepixel.com/api/v1/mail-tracking?key=<KEY> \\
+                code={`$ curl -X POST https://peakpixel.com/api/v1/mail-tracking?key=<KEY> \\
   -H "Content-type: application/json" \\
   -d '{"name":"Newsletter"}'`}
               />
@@ -624,7 +624,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X POST "https://pastepixel.com/api/v1/mail-tracking?key=<KEY>" \\
+                code={`$ curl -X POST "https://peakpixel.com/api/v1/mail-tracking?key=<KEY>" \\
   -H "Content-type: application/json" \\
   -d '{"name":"Newsletter","enabled":true,"uniqueOpensOnly":false,"trackIpAddresses":true,"trackUserAgents":true,"trackDateTimes":true}'`}
               />
@@ -666,7 +666,7 @@ export function DocsPageContent() {
               <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside mb-4">
                 <li><code className="bg-muted px-1 rounded">id</code> — ID of the mail tracking</li>
                 <li><code className="bg-muted px-1 rounded">created</code> — timestamp of creation (ms since epoch)</li>
-                <li><code className="bg-muted px-1 rounded">mailTrackingUrl</code> — URL to the PastePixel dashboard page</li>
+                <li><code className="bg-muted px-1 rounded">mailTrackingUrl</code> — URL to the PeakPixel dashboard page</li>
                 <li><code className="bg-muted px-1 rounded">name</code> — name of the mail tracking</li>
                 <li><code className="bg-muted px-1 rounded">enabled</code> — whether data collection is active</li>
                 <li><code className="bg-muted px-1 rounded">uniqueOpensOnly</code> — whether unique opens only are collected</li>
@@ -677,7 +677,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X GET "https://pastepixel.com/api/v1/mail-tracking/465?key=<KEY>"`}
+                code={`$ curl -X GET "https://peakpixel.com/api/v1/mail-tracking/465?key=<KEY>"`}
               />
 
               <JsonBlock
@@ -687,7 +687,7 @@ export function DocsPageContent() {
   "msg": {
     "id": 465,
     "created": 1611599175410,
-    "mailTrackingUrl": "https://pastepixel.com/tracking/465",
+    "mailTrackingUrl": "https://peakpixel.com/tracking/465",
     "name": "Newsletter",
     "enabled": true,
     "uniqueOpensOnly": false,
@@ -700,7 +700,7 @@ export function DocsPageContent() {
       "id": 123,
       "created": 1611599175410,
       "token": "fbAQfWDabnHgQNwf4CFZ.png",
-      "url": "https://pastepixel.com/image/fbAQfWDabnHgQNwf4CFZ.png",
+      "url": "https://peakpixel.com/image/fbAQfWDabnHgQNwf4CFZ.png",
       "timesOpened": 50
     },
     "trackableUrls": [
@@ -708,7 +708,7 @@ export function DocsPageContent() {
         "id": 756,
         "created": 1611599175410,
         "token": "fbAQfWDabnHgQNwf4Cqw",
-        "trackableUrl": "https://pastepixel.com/url/fbAQfWDabnHgQNwf4Cqw",
+        "trackableUrl": "https://peakpixel.com/url/fbAQfWDabnHgQNwf4Cqw",
         "originalUrl": "https://my-website.com/",
         "timesOpened": 50
       }
@@ -743,7 +743,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X DELETE "https://pastepixel.com/api/v1/mail-tracking/<ID>?key=<KEY>"`}
+                code={`$ curl -X DELETE "https://peakpixel.com/api/v1/mail-tracking/<ID>?key=<KEY>"`}
               />
 
               <JsonBlock
@@ -799,7 +799,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X POST "https://pastepixel.com/api/v1/mail-tracking/123/pixel?key=<KEY>"`}
+                code={`$ curl -X POST "https://peakpixel.com/api/v1/mail-tracking/123/pixel?key=<KEY>"`}
               />
 
               <JsonBlock
@@ -809,7 +809,7 @@ export function DocsPageContent() {
   "msg": {
     "id": 144,
     "token": "fbAQfWDabnHgQNwf4CFZ.png",
-    "url": "https://pastepixel.com/image/fbAQfWDabnHgQNwf4CFZ.png"
+    "url": "https://peakpixel.com/image/fbAQfWDabnHgQNwf4CFZ.png"
   }
 }`}
               />
@@ -849,7 +849,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X GET "https://pastepixel.com/api/v1/pixel/123?key=<KEY>"`}
+                code={`$ curl -X GET "https://peakpixel.com/api/v1/pixel/123?key=<KEY>"`}
               />
 
               <JsonBlock
@@ -860,10 +860,10 @@ export function DocsPageContent() {
     "id": 123,
     "created": 1611599175410,
     "token": "fbAQfWDabnHgQNwf4CFZ.png",
-    "url": "https://pastepixel.com/image/fbAQfWDabnHgQNwf4CFZ.png",
+    "url": "https://peakpixel.com/image/fbAQfWDabnHgQNwf4CFZ.png",
     "timesOpened": 50,
     "mailTrackingId": 465,
-    "mailTrackingUrl": "https://pastepixel.com/tracking/465"
+    "mailTrackingUrl": "https://peakpixel.com/tracking/465"
   }
 }`}
               />
@@ -914,7 +914,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X GET "https://pastepixel.com/api/v1/pixel/123/data?offset=3&limit=50&key=<KEY>"`}
+                code={`$ curl -X GET "https://peakpixel.com/api/v1/pixel/123/data?offset=3&limit=50&key=<KEY>"`}
               />
 
               <JsonBlock
@@ -995,7 +995,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X POST "https://pastepixel.com/api/v1/mail-tracking/4/url?key=<KEY>" \\
+                code={`$ curl -X POST "https://peakpixel.com/api/v1/mail-tracking/4/url?key=<KEY>" \\
   -H "Content-type: application/json" \\
   -d '{"url":"https://mywebsite.com/"}'`}
               />
@@ -1007,7 +1007,7 @@ export function DocsPageContent() {
   "msg": {
     "id": 235,
     "token": "ZHMhkAbySWXFQqdpB7PQ",
-    "trackableUrl": "https://pastepixel.com/url/ZHMhkAbySWXFQqdpB7PQ",
+    "trackableUrl": "https://peakpixel.com/url/ZHMhkAbySWXFQqdpB7PQ",
     "originalUrl": "https://mywebsite.com/"
   }
 }`}
@@ -1049,7 +1049,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X GET "https://pastepixel.com/api/v1/url/756?key=<KEY>"`}
+                code={`$ curl -X GET "https://peakpixel.com/api/v1/url/756?key=<KEY>"`}
               />
 
               <JsonBlock
@@ -1060,11 +1060,11 @@ export function DocsPageContent() {
     "id": 756,
     "created": 1611599175410,
     "token": "fbAQfWDabnHgQNwf4Cqw",
-    "trackableUrl": "https://pastepixel.com/url/fbAQfWDabnHgQNwf4Cqw",
+    "trackableUrl": "https://peakpixel.com/url/fbAQfWDabnHgQNwf4Cqw",
     "originalUrl": "https://my-website.com/",
     "timesOpened": 89,
     "mailTrackingId": 465,
-    "mailTrackingUrl": "https://pastepixel.com/tracking/465"
+    "mailTrackingUrl": "https://peakpixel.com/tracking/465"
   }
 }`}
               />
@@ -1114,7 +1114,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X GET "https://pastepixel.com/api/v1/url/756/data?offset=0&limit=10&key=<KEY>"`}
+                code={`$ curl -X GET "https://peakpixel.com/api/v1/url/756/data?offset=0&limit=10&key=<KEY>"`}
               />
 
               <JsonBlock
@@ -1168,7 +1168,7 @@ export function DocsPageContent() {
 
               <CodeBlock
                 language="bash"
-                code={`$ curl -X DELETE "https://pastepixel.com/api/v1/url/235?key=<KEY>"`}
+                code={`$ curl -X DELETE "https://peakpixel.com/api/v1/url/235?key=<KEY>"`}
               />
 
               <JsonBlock
@@ -1185,7 +1185,7 @@ export function DocsPageContent() {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-8 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Logo size={20} />
-                <span>PastePixel API Documentation</span>
+                <span>PeakPixel API Documentation</span>
                 <Badge variant="outline">v1</Badge>
               </div>
               <div className="flex items-center gap-4">

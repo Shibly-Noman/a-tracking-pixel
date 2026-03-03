@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "question": "What is PeekPixel Admin?",
-    "answer": "PeekPixel Admin is a comprehensive admin dashboard template built with React, TypeScript, and shadcn/ui components. It provides a complete solution for managing your e-commerce store or business operations.",
+    "question": "What is PeakPixel Admin?",
+    "answer": "PeakPixel Admin is a comprehensive admin dashboard template built with React, TypeScript, and shadcn/ui components. It provides a complete solution for managing your e-commerce store or business operations.",
     "category": "General"
   },
   {
@@ -26,7 +26,7 @@
   {
     "id": 5,
     "question": "How do I contact support?",
-    "answer": "You can contact our support team through the support page, by email at support@PeekPixel.com, or through the live chat feature available 24/7.",
+    "answer": "You can contact our support team through the support page, by email at support@PeakPixel.com, or through the live chat feature available 24/7.",
     "category": "General"
   },
   {

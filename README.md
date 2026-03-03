@@ -13,23 +13,24 @@
     *   [Problem Statement](#problem-statement)
     *   [Solution & Core Features](#solution--core-features)
     *   [Architectural Principles](#architectural-principles)
-2.  [High-Level Architecture](#2-high-level-architecture)
-3.  [Monorepo Structure (Turborepo)](#3-monorepo-structure-turborepo)
+2.  [Demo Preview](#2-demo-preview)
+3.  [High-Level Architecture](#3-high-level-architecture)
+4.  [Monorepo Structure (Turborepo)](#4-monorepo-structure-turborepo)
     *   [Apps](#apps)
     *   [Services](#services)
     *   [Packages (Internal Libraries)](#packages-internal-libraries)
     *   [Infrastructure (IaC)](#infrastructure-iac)
-4.  [Technology Stack](#4-technology-stack)
-5.  [Getting Started](#5-getting-started)
+5.  [Technology Stack](#5-technology-stack)
+6.  [Getting Started](#6-getting-started)
     *   [Prerequisites](#prerequisites)
     *   [Local Development Setup](#local-development-setup)
     *   [Running Services](#running-services)
     *   [Building & Testing](#building--testing)
-6.  [Deployment](#6-deployment)
-7.  [Contributing](#7-contributing)
-8.  [Security & Privacy](#8-security--privacy)
-9.  [Support](#9-support)
-10. [License](#10-license)
+7.  [Deployment](#7-deployment)
+8.  [Contributing](#8-contributing)
+9.  [Security & Privacy](#9-security--privacy)
+10. [Support](#10-support)
+11. [License](#11-license)
 
 ---
 
@@ -65,7 +66,34 @@ Our platform addresses these challenges by offering:
 
 ---
 
-## 2. High-Level Architecture
+## 2. Demo Preview
+
+A visual overview of the platform's key screens and analytics capabilities.
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="public/img/ub.jpg" alt="User Behavior Dashboard" width="100%" /><br/>
+      <sub><b>User Behavior Dashboard</b></sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="public/img/attribution-analysis.jpg" alt="Attribution Analysis" width="100%" /><br/>
+      <sub><b>Attribution Analysis</b></sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="public/img/rwe.jpg" alt="Real-time Event Stream" width="100%" /><br/>
+      <sub><b>Real-time Event Stream</b></sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="public/img/user-behavior.jpg" alt="Real-time Event Stream" width="100%" /><br/>
+      <sub><b>Real-time Event Stream</b></sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 3. High-Level Architecture
 
 The system is built on an event-driven, distributed architecture with ingestion, processing, storage, and analytics layers separated for scalability and reliability.
 
@@ -111,7 +139,7 @@ graph TD
 
 ---
 
-## 3. Monorepo Structure (Turborepo)
+## 4. Monorepo Structure (Turborepo)
 
 This project uses [Turborepo](https://turborepo.org) to manage a monorepo containing multiple applications, services, and shared packages.
 
@@ -171,7 +199,7 @@ This project uses [Turborepo](https://turborepo.org) to manage a monorepo contai
 
 ---
 
-## 4. Technology Stack
+## 5. Technology Stack
 
 *   **Monorepo Tool:** Turborepo
 *   **Backend Languages:** Go (primary for services), TypeScript/Node.js (for Query API)
@@ -189,7 +217,7 @@ This project uses [Turborepo](https://turborepo.org) to manage a monorepo contai
 
 ---
 
-## 5. Getting Started
+## 6. Getting Started
 
 ### Prerequisites
 
@@ -290,7 +318,7 @@ You can run individual services in development mode using Turborepo.
 
 ---
 
-## 6. Deployment
+## 7. Deployment
 
 Deployment is managed via Infrastructure as Code (IaC) using Terraform for cloud resources and Helm charts deployed to Kubernetes. GitHub Actions handle CI/CD, triggering deployments to `dev`, `staging`, and `prod` environments upon merging to respective branches.
 
@@ -302,13 +330,13 @@ Deployment is managed via Infrastructure as Code (IaC) using Terraform for cloud
 
 ---
 
-## 7. Contributing
+## 8. Contributing
 
 We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to submit pull requests, report issues, and contribute to the project.
 
 ---
 
-## 8. Security & Privacy
+## 9. Security & Privacy
 
 This platform is built with a strong emphasis on security and privacy:
 
@@ -324,13 +352,13 @@ For security concerns, please refer to our [SECURITY.md](SECURITY.md).
 
 ---
 
-## 9. Support
+## 10. Support
 
 For questions, issues, or feature requests, please open an issue on our [GitHub Issues](https://github.com/your-org/platform/issues) page.
 
 ---
 
-## 10. License
+## 11. License
 
 This project is licensed under the [MIT License](LICENSE).
 

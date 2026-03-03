@@ -106,7 +106,7 @@ export function FeaturesSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 pe-4 pt-2">
               <Button size="lg" className="cursor-pointer">
-                <a href="https://PeekPixel.com/templates" className='flex items-center'>
+                <a href="https://PeakPixel.com/templates" className='flex items-center'>
                   Get Started Free
                   <ArrowRight className="ms-2 size-4" aria-hidden="true" />
                 </a>

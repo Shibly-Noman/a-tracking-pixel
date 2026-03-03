@@ -11,12 +11,12 @@ export function SiteFooter() {
             <Heart className="h-4 w-4 fill-red-500 text-red-500" />
             <span>by</span>
             <Link
-              href="https://PeekPixel.com"
+              href="https://PeakPixel.com"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-foreground hover:text-primary transition-colors"
             >
-              PeekPixel Team
+              PeakPixel Team
             </Link>
           </div>
           <p className="text-xs text-muted-foreground">
