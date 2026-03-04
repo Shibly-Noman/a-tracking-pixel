@@ -7,31 +7,6 @@
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-latest-326CE5?style=flat&logo=kubernetes)](https://kubernetes.io/)
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF8000?style=flat&logo=cloudflare)](https://workers.cloudflare.com/)
 
-## Table of Contents
-
-1.  [Project Overview](#1-project-overview)
-    - [Problem Statement](#problem-statement)
-    - [Solution & Core Features](#solution--core-features)
-    - [Architectural Principles](#architectural-principles)
-2.  [Demo Preview](#2-demo-preview)
-3.  [High-Level Architecture](#3-high-level-architecture)
-4.  [Monorepo Structure (Turborepo)](#4-monorepo-structure-turborepo)
-    - [Apps](#apps)
-    - [Services](#services)
-    - [Packages (Internal Libraries)](#packages-internal-libraries)
-    - [Infrastructure (IaC)](#infrastructure-iac)
-5.  [Technology Stack](#5-technology-stack)
-6.  [Getting Started](#6-getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Local Development Setup](#local-development-setup)
-    - [Running Services](#running-services)
-    - [Building & Testing](#building--testing)
-7.  [Deployment](#7-deployment)
-8.  [Contributing](#8-contributing)
-9.  [Security & Privacy](#9-security--privacy)
-10. [Support](#10-support)
-11. [License](#11-license)
-
 ---
 
 ## 1. Project Overview
