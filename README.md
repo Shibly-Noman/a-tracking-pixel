@@ -1,4 +1,4 @@
-# 🚀 Cookieless Tracking & Attribution SaaS Platform
+# 🚀 Cookieless Tracking & Attribution Platform
 
 [![Turborepo](https://img.shields.io/badge/Powered%20by-Turborepo-orange?style=flat&logo=turborepo)](https://turborepo.org)
 [![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://go.dev/)
